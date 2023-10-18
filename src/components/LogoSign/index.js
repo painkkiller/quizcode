@@ -1,12 +1,13 @@
 import {
-  Box,
+  // Box,
   Tooltip,
-  Badge,
+  // Badge,
   tooltipClasses,
   styled,
-  useTheme
+  // useTheme
 } from '@mui/material';
 import { Link } from 'react-router-dom';
+
 
 const LogoWrapper = styled(Link)(
   ({ theme }) => `
@@ -19,62 +20,84 @@ const LogoWrapper = styled(Link)(
 `
 );
 
-const LogoSignWrapper = styled(Box)(
-  () => `
-        width: 52px;
-        height: 38px;
-`
-);
+// const LogoSignWrapper = styled(Box)(
+//   () => `
+//         width: 52px;
+//         height: 38px;
+// `
+// );
 
-const LogoSign = styled(Box)(
-  ({ theme }) => `
-        background: ${theme.general.reactFrameworkColor};
-        width: 18px;
-        height: 18px;
-        border-radius: ${theme.general.borderRadiusSm};
-        position: relative;
-        transform: rotate(45deg);
-        top: 3px;
-        left: 17px;
+// const LogoSign = styled(Box)(
+//   ({ theme }) => `
+//         background: ${theme.general.reactFrameworkColor};
+//         width: 18px;
+//         height: 18px;
+//         border-radius: ${theme.general.borderRadiusSm};
+//         position: relative;
+//         transform: rotate(45deg);
+//         top: 3px;
+//         left: 17px;
 
-        &:after, 
-        &:before {
-            content: "";
-            display: block;
-            width: 18px;
-            height: 18px;
-            position: absolute;
-            top: -1px;
-            right: -20px;
-            transform: rotate(0deg);
-            border-radius: ${theme.general.borderRadiusSm};
-        }
+//         &:after, 
+//         &:before {
+//             content: "";
+//             display: block;
+//             width: 18px;
+//             height: 18px;
+//             position: absolute;
+//             top: -1px;
+//             right: -20px;
+//             transform: rotate(0deg);
+//             border-radius: ${theme.general.borderRadiusSm};
+//         }
 
-        &:before {
-            background: ${theme.palette.primary.main};
-            right: auto;
-            left: 0;
-            top: 20px;
-        }
+//         &:before {
+//             background: ${theme.palette.primary.main};
+//             right: auto;
+//             left: 0;
+//             top: 20px;
+//         }
 
-        &:after {
-            background: ${theme.palette.secondary.main};
-        }
-`
-);
+//         &:after {
+//             background: ${theme.palette.secondary.main};
+//         }
+// `
+// );
 
-const LogoSignInner = styled(Box)(
-  ({ theme }) => `
-        width: 16px;
-        height: 16px;
-        position: absolute;
-        top: 12px;
-        left: 12px;
-        z-index: 5;
-        border-radius: ${theme.general.borderRadiusSm};
-        background: ${theme.header.background};
-`
-);
+// const LogoSignInner = styled(Box)(
+//   ({ theme }) => `
+//         width: 16px;
+//         height: 16px;
+//         position: absolute;
+//         top: 12px;
+//         left: 12px;
+//         z-index: 5;
+//         border-radius: ${theme.general.borderRadiusSm};
+//         background: ${theme.header.background};
+// `
+// );
+
+const logoCircle = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  // textAlign: 'center',
+  background: '#4454cd',
+  // width: '50px',
+  // height: '50px',
+  padding: '0.375rem',
+  width: '3.5rem',
+  height: '3.5rem',
+  borderRadius: '50%',
+  // padding: '2px',
+  // textAlign: 'center',
+};
+
+const logoText = {
+  fontFamily: '"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"',
+  fontSize: '14px',
+  color: '#ffffff'
+}
 
 const TooltipWrapper = styled(({ className, ...props }) => (
   <Tooltip {...props} classes={{ popper: className }} />
@@ -94,15 +117,15 @@ const TooltipWrapper = styled(({ className, ...props }) => (
 }));
 
 function Logo() {
-  const theme = useTheme();
+  // const theme = useTheme();
 
   return (
     <TooltipWrapper
-      title="Tokyo Free White React Javascript Admin Dashboard"
+      title="Проверьте свои знания с QuizCode"
       arrow
     >
       <LogoWrapper to="/overview">
-        <Badge
+        {/* <Badge
           sx={{
             '.MuiBadge-badge': {
               fontSize: theme.typography.pxToRem(11),
@@ -119,7 +142,13 @@ function Logo() {
               <LogoSignInner />
             </LogoSign>
           </LogoSignWrapper>
-        </Badge>
+        </Badge> */}
+        {/* <div>
+          <img src='./qcIcons/qc-icon-192x192.png' alt="quizcode" />
+        </div> */}
+        <div style={logoCircle}>
+          <p style={logoText}>QCode</p>
+        </div>
       </LogoWrapper>
     </TooltipWrapper>
   );
