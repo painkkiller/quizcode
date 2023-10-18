@@ -1,10 +1,9 @@
 import {
-  // Box,
   Tooltip,
-  // Badge,
+  Badge,
   tooltipClasses,
   styled,
-  // useTheme
+  useTheme
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 
@@ -64,18 +63,18 @@ const LogoWrapper = styled(Link)(
 // `
 // );
 
-// const LogoSignInner = styled(Box)(
-//   ({ theme }) => `
-//         width: 16px;
-//         height: 16px;
-//         position: absolute;
-//         top: 12px;
-//         left: 12px;
-//         z-index: 5;
-//         border-radius: ${theme.general.borderRadiusSm};
-//         background: ${theme.header.background};
-// `
-// );
+ /* const LogoSignInner = styled(Box)(
+  ({ theme }) => `
+         width: 16px;
+         height: 16px;
+         position: absolute;
+         top: 12px;
+         left: 12px;
+         z-index: 5;
+         border-radius: ${theme.general.borderRadiusSm};
+         background: ${theme.header.background};
+ `
+ ); */
 
 const logoCircle = {
   display: 'flex',
@@ -97,7 +96,7 @@ const logoText = {
   fontFamily: '"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"',
   fontSize: '14px',
   color: '#ffffff'
-}
+} 
 
 const TooltipWrapper = styled(({ className, ...props }) => (
   <Tooltip {...props} classes={{ popper: className }} />
@@ -117,7 +116,7 @@ const TooltipWrapper = styled(({ className, ...props }) => (
 }));
 
 function Logo() {
-  // const theme = useTheme();
+  const theme = useTheme();
 
   return (
     <TooltipWrapper
@@ -125,7 +124,7 @@ function Logo() {
       arrow
     >
       <LogoWrapper to="/overview">
-        {/* <Badge
+        <Badge
           sx={{
             '.MuiBadge-badge': {
               fontSize: theme.typography.pxToRem(11),
@@ -137,18 +136,13 @@ function Logo() {
           color="success"
           badgeContent="2.0"
         >
-          <LogoSignWrapper>
-            <LogoSign>
-              <LogoSignInner />
-            </LogoSign>
-          </LogoSignWrapper>
-        </Badge> */}
-        {/* <div>
-          <img src='./qcIcons/qc-icon-192x192.png' alt="quizcode" />
+          <div style={logoCircle}>
+            <p style={logoText}>QCode</p>
+          </div>
+        </Badge> 
+       {/*  <div>
+          <img src='/static/qcIcons/qc-icon-192x192.png' alt="quizcode" />
         </div> */}
-        <div style={logoCircle}>
-          <p style={logoText}>QCode</p>
-        </div>
       </LogoWrapper>
     </TooltipWrapper>
   );
