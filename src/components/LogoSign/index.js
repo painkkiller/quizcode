@@ -7,6 +7,7 @@ import {
   useTheme
 } from '@mui/material';
 import { Link } from 'react-router-dom';
+import './style.css';
 
 
 const LogoWrapper = styled(Link)(
@@ -29,22 +30,6 @@ const LogoSignWrapper = styled(Box)(
 
 
 
-const logoCircle = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  background: '#4454cd',
-  padding: '0.375rem',
-  width: '3.5rem',
-  height: '3.5rem',
-  borderRadius: '50%',
-};
-
-const logoText = {
-  fontFamily: '"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"',
-  fontSize: '14px',
-  color: '#ffffff'
-}
 
 const TooltipWrapper = styled(({ className, ...props }) => (
   <Tooltip {...props} classes={{ popper: className }} />
@@ -85,8 +70,8 @@ function Logo() {
           badgeContent="2.0"
         >
           <LogoSignWrapper>
-            <div style={logoCircle}>
-              <p style={logoText}>QCode</p>
+            <div className='n'>
+              <div className='text'>QC</div>
             </div>
           </LogoSignWrapper>
         </Badge>
