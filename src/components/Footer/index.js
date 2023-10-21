@@ -18,7 +18,7 @@ function Footer() {
       >
         <Box>
           <Typography variant="subtitle1">
-            &copy; 2022 - Tokyo Free WHITE React Javascript Admin Dashboard
+            &copy; 2023 2Di Team
           </Typography>
         </Box>
         <Typography
@@ -29,11 +29,19 @@ function Footer() {
         >
           Crafted by{' '}
           <Link
-            href="https://bloomui.com"
+            href="https://github.com/DiWebDev"
             target="_blank"
             rel="noopener noreferrer"
           >
-            BloomUI.com
+          DiWebDev
+          </Link>{' '}
+          and{' '}
+          <Link
+            href="https://github.com/painkkiller"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+          PainKKKiller
           </Link>
         </Typography>
       </Box>
