@@ -1,4 +1,5 @@
-import { Box, Button, Container, Grid, Typography, styled } from '@mui/material';
+// Box (@mui/material),
+import { Button, Container, Grid, Typography, styled } from '@mui/material';
 
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -14,59 +15,59 @@ const TypographyH2 = styled(Typography)(
 `
 );
 
-const LabelWrapper = styled(Box)(
-  ({ theme }) => `
-    background-color: ${theme.colors.success.main};
-    color: ${theme.palette.success.contrastText};
-    font-weight: bold;
-    border-radius: 30px;
-    text-transform: uppercase;
-    display: inline-block;
-    font-size: ${theme.typography.pxToRem(11)};
-    padding: ${theme.spacing(0.5)} ${theme.spacing(1.5)};
-    margin-bottom: ${theme.spacing(2)};
-`
-);
+// const LabelWrapper = styled(Box)(
+//   ({ theme }) => `
+//     background-color: ${theme.colors.success.main};
+//     color: ${theme.palette.success.contrastText};
+//     font-weight: bold;
+//     border-radius: 30px;
+//     text-transform: uppercase;
+//     display: inline-block;
+//     font-size: ${theme.typography.pxToRem(11)};
+//     padding: ${theme.spacing(0.5)} ${theme.spacing(1.5)};
+//     margin-bottom: ${theme.spacing(2)};
+// `
+// );
 
-const MuiAvatar = styled(Box)(
-  ({ theme }) => `
-    width: ${theme.spacing(8)};
-    height: ${theme.spacing(8)};
-    border-radius: ${theme.general.borderRadius};
-    background-color: #e5f7ff;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto ${theme.spacing(2)};
+// const MuiAvatar = styled(Box)(
+//   ({ theme }) => `
+//     width: ${theme.spacing(8)};
+//     height: ${theme.spacing(8)};
+//     border-radius: ${theme.general.borderRadius};
+//     background-color: #e5f7ff;
+//     flex-shrink: 0;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     margin: 0 auto ${theme.spacing(2)};
 
-    img {
-      width: 60%;
-      height: 60%;
-      display: block;
-    }
-`
-);
+//     img {
+//       width: 60%;
+//       height: 60%;
+//       display: block;
+//     }
+// `
+// );
 
-const JsAvatar = styled(Box)(
-  ({ theme }) => `
-    width: ${theme.spacing(8)};
-    height: ${theme.spacing(8)};
-    border-radius: ${theme.general.borderRadius};
-    background-color: #fef8d8;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto ${theme.spacing(2)};
+// const JsAvatar = styled(Box)(
+//   ({ theme }) => `
+//     width: ${theme.spacing(8)};
+//     height: ${theme.spacing(8)};
+//     border-radius: ${theme.general.borderRadius};
+//     background-color: #fef8d8;
+//     flex-shrink: 0;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     margin: 0 auto ${theme.spacing(2)};
 
-    img {
-      width: 60%;
-      height: 60%;
-      display: block;
-    }
-`
-);
+//     img {
+//       width: 60%;
+//       height: 60%;
+//       display: block;
+//     }
+// `
+// );
 
 function Hero() {
   return (
@@ -78,9 +79,9 @@ function Hero() {
         container
       >
         <Grid item md={10} lg={8} mx="auto">
-          <LabelWrapper color="success">Version 2.0.0</LabelWrapper>
+          {/* <LabelWrapper color="success">Version 2.0.0</LabelWrapper> */}
           <TypographyH1 sx={{ mb: 2 }} variant="h1">
-            Tokyo Free White React Javascript Admin Dashboard
+            QuizCode
           </TypographyH1>
           <TypographyH2
             sx={{ lineHeight: 1.5, pb: 4 }}
@@ -88,9 +89,7 @@ function Hero() {
             color="text.secondary"
             fontWeight="normal"
           >
-            High performance React template built with lots of powerful
-            Material-UI components across multiple product niches for fast &
-            perfect apps development processes
+            Проверьте свои знания с QuizCode
           </TypographyH2>
           <Button
             component={RouterLink}
@@ -98,7 +97,7 @@ function Hero() {
             size="large"
             variant="contained"
           >
-            Browse Live Preview
+            Войти
           </Button>
           <Button
             sx={{ ml: 2 }}
@@ -109,9 +108,9 @@ function Hero() {
             size="large"
             variant="text"
           >
-            Key Features
+            Регистрация
           </Button>
-          <Grid container spacing={3} mt={5}>
+          {/* <Grid container spacing={3} mt={5}>
             <Grid item md={6}>
               <MuiAvatar>
                 <img
@@ -146,7 +145,7 @@ function Hero() {
                 </Typography>
               </Typography>
             </Grid>
-          </Grid>
+          </Grid> */}
         </Grid>
       </Grid>
     </Container>
