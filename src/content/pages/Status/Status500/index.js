@@ -130,7 +130,7 @@ function Status500() {
                     my: 2
                   }}
                 >
-                  Tokyo Free White React Javascript Admin Dashboard
+                 Quizcode
                 </TypographyPrimary>
                 <TypographySecondary
                   variant="h4"
@@ -139,9 +139,7 @@ function Status500() {
                     mb: 4
                   }}
                 >
-                  High performance React template built with lots of powerful
-                  MUI (Material-UI) components across multiple product niches
-                  for fast & perfect apps development processes.
+                  Проверь свои знания
                 </TypographySecondary>
                 <Button href="/overview" size="large" variant="contained">
                   Overview
