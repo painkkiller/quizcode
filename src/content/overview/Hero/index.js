@@ -93,7 +93,7 @@ function Hero() {
           </TypographyH2>
           <Button
             component={RouterLink}
-            to="/dashboards/crypto"
+            to="/auth/login"
             size="large"
             variant="contained"
           >
@@ -104,7 +104,7 @@ function Hero() {
             component="a"
             target="_blank"
             rel="noopener"
-            href="https://bloomui.com/product/tokyo-free-white-react-javascript-material-ui-admin-dashboard"
+            href="/auth/signup"
             size="large"
             variant="text"
           >

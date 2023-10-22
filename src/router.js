@@ -17,6 +17,12 @@ const Loader = (Component) => (props) =>
 
 const Overview = Loader(lazy(() => import('src/content/overview')));
 
+// Auth pages
+const Login = Loader(lazy(() => import('src/content/pages/Login/JwtLogin')));
+const Register = Loader(lazy(() => import('src/content/pages/Register/JwtRegister')));
+const ForgotPassword = Loader(lazy(() => import('src/content/pages/ForgotPassword')));
+
+
 // Dashboards
 
 const Crypto = Loader(lazy(() => import('src/content/dashboards/Crypto')));
@@ -62,6 +68,23 @@ const routes = [
       {
         path: 'overview',
         element: <Navigate to="/" replace />
+      },
+      {
+        path: 'auth',
+        children: [
+          {
+            path: 'login',
+            element: <Login />
+          },
+          {
+            path: 'signup',
+            element: <Register />
+          },
+          {
+            path: 'forgot-password',
+            element: <ForgotPassword />
+          }
+        ]
       },
       {
         path: 'status',
