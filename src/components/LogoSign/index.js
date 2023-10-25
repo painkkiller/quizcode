@@ -70,9 +70,12 @@ function Logo() {
           badgeContent="2.0"
         >
           <LogoSignWrapper>
-            <div className='n'>
-              <div className='text'>QC</div>
+            <div>
+              <div className='n'>
+                <div className='text'>QC</div>
+              </div>
             </div>
+
           </LogoSignWrapper>
         </Badge>
       </LogoWrapper>
