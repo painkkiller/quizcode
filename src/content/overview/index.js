@@ -1,9 +1,10 @@
-import Nav from "./Navbar/Nav";
+import Nav from "./Navbar";
+
+
 
 
 function Overview() {
   return (
-
     <Nav />
 
   );
