@@ -16,7 +16,7 @@ const LogoWrapper = styled(Link)(
         display: flex;
         text-decoration: none;
         width: 53px;
-        margin: 0 auto;
+        margin-right:20px;
         font-weight: ${theme.typography.fontWeightBold};
 `
 );

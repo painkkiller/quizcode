@@ -1,3 +1,4 @@
+import Main from "./Main";
 import Nav from "./Navbar";
 
 
@@ -5,8 +6,10 @@ import Nav from "./Navbar";
 
 function Overview() {
   return (
-    <Nav />
-
+    <>
+      <Nav/>
+      <Main/>
+    </>
   );
 }
 
