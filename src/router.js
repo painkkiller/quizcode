@@ -121,11 +121,11 @@ const routes = [
         element: <Navigate to="tasks" replace />
       },
       {
-        path: 'tests',
+        path: 'tests/:testId',
         element: <Tests />
       },
       {
-        path: 'courses',
+        path: 'courses/:courseId',
         element: <Courses />
       }
     ]

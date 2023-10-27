@@ -196,7 +196,7 @@ function SidebarMenu() {
                   disableRipple
                   component={RouterLink}
                   onClick={closeSidebar}
-                  to="/main/courses"
+                  to="/main/courses/course1"
                   startIcon={<BrightnessLowTwoToneIcon />}
                 >
                   Курс 1
@@ -207,7 +207,7 @@ function SidebarMenu() {
                   disableRipple
                   component={RouterLink}
                   onClick={closeSidebar}
-                  to="/main/courses"
+                  to="/main/courses/course2"
                   startIcon={<MmsTwoToneIcon />}
                 >
                   Курс 2
@@ -231,7 +231,7 @@ function SidebarMenu() {
                   disableRipple
                   component={RouterLink}
                   onClick={closeSidebar}
-                  to="/main/tests"
+                  to="/main/tests/test1"
                   startIcon={<AccountCircleTwoToneIcon />}
                 >
                   Тест 1
@@ -242,7 +242,7 @@ function SidebarMenu() {
                   disableRipple
                   component={RouterLink}
                   onClick={closeSidebar}
-                  to="/main/tests"
+                  to="/main/tests/test2"
                   startIcon={<DisplaySettingsTwoToneIcon />}
                 >
                   Тест 2
