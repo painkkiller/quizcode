@@ -14,7 +14,6 @@ const Loader = (Component) => (props) =>
   );
 
 // Pages
-
 const Overview = Loader(lazy(() => import('src/content/overview')));
 
 // Auth pages
@@ -23,18 +22,14 @@ const Register = Loader(lazy(() => import('src/content/pages/Register/JwtRegiste
 const ForgotPassword = Loader(lazy(() => import('src/content/pages/ForgotPassword')));
 
 
-// Dashboards
 
-const Crypto = Loader(lazy(() => import('src/content/dashboards/Crypto')));
+const Tests = Loader(lazy(() => import('src/content/pages/Tests/index')));
+const Courses = Loader(lazy(() => import('src/content/pages/Courses/index')));
 
-// Applications
-
-const Messenger = Loader(
-  lazy(() => import('src/content/applications/Messenger'))
-);
 const UserProfile = Loader(
   lazy(() => import('src/content/applications/Users/profile'))
 );
+
 const UserSettings = Loader(
   lazy(() => import('src/content/applications/Users/settings'))
 );
@@ -118,7 +113,7 @@ const routes = [
     ]
   },
   {
-    path: 'dashboards',
+    path: 'main',
     element: <SidebarLayout />,
     children: [
       {
@@ -126,12 +121,12 @@ const routes = [
         element: <Navigate to="tasks" replace />
       },
       {
-        path: 'crypto',
-        element: <Crypto />
+        path: 'tests',
+        element: <Tests />
       },
       {
-        path: 'messenger',
-        element: <Messenger />
+        path: 'courses',
+        element: <Courses />
       }
     ]
   },
@@ -139,10 +134,6 @@ const routes = [
     path: 'management',
     element: <SidebarLayout />,
     children: [
-      {
-        path: '',
-        element: <Navigate to="transactions" replace />
-      },
       {
         path: 'profile',
         children: [
