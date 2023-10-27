@@ -5,7 +5,7 @@ function Main() {
     <Box
       sx={{
         backgroundImage:
-          'url(https://images.prismic.io/quizlet-web/ZDRiOGI2MTEtOTU1NS00Y2Q1LWJjN2QtM2Y2NzYwYTJhODQ1_6aa15201-1bbd-4bab-803d-93e7d2d4110e_altimage128129.png?auto=compress,format&rect=0,0,2880,1317&w=2880&h=1317)',
+          'url(https://plus.unsplash.com/premium_photo-1661281412140-dfb328ae967b?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
         minHeight: '100vh',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover'
@@ -15,7 +15,7 @@ function Main() {
         <Box
           sx={{
             display: 'flex',
-            position:'relative',
+            position: 'relative',
             alignItems: 'center',
             justifyContent: 'left',
             padding: '20px'
@@ -27,28 +27,24 @@ function Main() {
               sx={{
                 textAlign: 'left',
                 alignItems: 'center',
-                color: '#fff',
+                color:'#282F3F',
                 maxWidth: '500px',
                 fontSize: '25px',
                 fontWeight: '700'
               }}
             >
-              Легко осваивайте програмирование с помощью карточек и пробных
-              тестов
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, tenetur.
             </Typography>
             <Typography
               sx={{
+                color:'#282F3F',
                 textAlign: 'left',
                 alignItems: 'center',
-                color: '#fff',
                 maxWidth: '500px',
                 fontSize: '16px'
               }}
             >
-              Присоединяйтесь к 60 миллионам учеников по всему миру, которые
-              используют карточки, пробные тесты и игры Quizlet, основанные на
-              научных принципах, чтобы достигать своих целей в школе,
-              университете и за их пределами.
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima dolores, soluta tenetur ipsa dignissimos deleniti at optio quae alias reprehenderit voluptates placeat laudantium exercitationem repudiandae ad nihil. Temporibus, error maiores!
             </Typography>
           </Box>
         </Box>
