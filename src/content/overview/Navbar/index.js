@@ -1,71 +1,162 @@
 import React from 'react';
-import { AppBar, Toolbar, Button, Typography } from '@mui/material';
+import { AppBar, Toolbar, Button, Typography, Box, Link } from '@mui/material';
+// import { Link } from 'react-router-dom';
 import Logo from 'src/components/LogoSign';
 
+const buttonsNavStyles = {
+  color: '#223355',
+  fontSize: '16px',
+  textTransform: 'uppercase',
+  fontWeight: 'light',
+  letterSpacing: 1,
+  height: '70px',
+  padding: '0',
+  borderRadius: '0',
+  transition: 'all 0.3s ease',
+  width: '100%',
+  '&:hover': {
+    backgroundColor: '#fff'
+  },
+  '&:after': {
+    bottom: '0',
+    content: "''",
+    display: 'block',
+    height: '2px',
+    left: '50%',
+    position: 'absolute',
+    background: '#223355',
+    transition: 'width 0.3s ease 0s, left 0.3s ease 0s',
+    width: '0',
+    borderRadius: '5px 5px 0px 0px'
+  },
+  '&:hover:after': {
+    width: '100%',
+    left: '0'
+  }
+};
+
+const underlineActive = {
+  '&:after': {
+    width: '100%',
+    left: '0'
+  }
+};
+
+const currentUrl = window.location.pathname;
+
+const buttonsAuthStyles = {
+  fontSize: '16px',
+  textTransform: 'uppercase',
+  fontWeight: 'light',
+  letterSpacing: 1,
+  transition: 'all 0.3s ease'
+};
+
 const Nav = () => {
-   return (
-      <AppBar
-         position="static"
-         variant="elevation"
-         sx={{ background: '#FFFFFF', padding: '15px' }}
-      >
-         <Toolbar>
-            <Logo />
+  return (
+    <AppBar
+      position="static"
+      variant="elevation"
+      sx={{ background: '#FFFFFF', paddingLeft: '16px', paddingRight: '16px' }}
+    >
+      <Toolbar>
+        <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+          <Logo />
+          <Link href="overview" style={{ textDecoration: 'none' }}>
             <Typography
-               sx={{
-                  color: '#223355',
-                  fontSize: '25px',
-                  marginRight: '15px',
-                  fontWeight: 'bold',
-                  letterSpacing: 1
-               }}
+              sx={{
+                color: '#223355',
+                fontSize: '25px',
+                marginRight: '15px',
+                fontWeight: 'bold',
+                letterSpacing: 1
+              }}
             >
-               QuizCode
+              QuizCode
             </Typography>
-            <Button sx={{
-               color: '#223355', fontSize: '16px', textTransform: 'uppercase', fontWeight: 'light', letterSpacing: 1, '&:hover': {
-                  backgroundColor: '#fff'
-               }
-            }} variant="text">
-               Главная
-            </Button>
-            <Button sx={{
-               color: '#223355', fontSize: '16px', textTransform: 'uppercase', fontWeight: 'light', letterSpacing: 1, '&:hover': {
-                  backgroundColor: '#fff'
-               }
-            }} variant="text">Тесты</Button>
-            <Button sx={{
-               marginLeft: 'auto', color: '#223355', fontSize: '16px', textTransform: 'uppercase', fontWeight: 'light', letterSpacing: 1,
-               transition: 'all 0.1s ease',
-               '&:hover': {
-                  backgroundColor: '#223355',
-                  color: '#fff',
-               }
-            }}>
-               Войти
-            </Button>
+          </Link>
+        </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            gap: '12px',
+            justifyContent: 'space-between'
+          }}
+        >
+          <Link href="/">
             <Button
-               variant="contained"
-               sx={{
-                  marginLeft: '10px',
-                  background: '#5568ff;',
-                  color: '#fff',
-                  fontSize: '16px',
-                  textTransform: 'uppercase',
-                  fontWeight: 'light',
-                  letterSpacing: 1,
-                  transition: 'all 0.3s ease',
-                  '&:hover': {
-                     backgroundColor: '#58c924',
-                     color: '#fff',
-                  }
-               }}
+              sx={
+                currentUrl.includes('/')
+                  ? [buttonsNavStyles, underlineActive]
+                  : buttonsNavStyles
+              }
+              variant="text"
             >
-               Регистрация
+              Главная
             </Button>
-         </Toolbar>
-      </AppBar>
-   );
+          </Link>
+          <Link href="main/tests/tests1">
+            <Button
+              sx={
+                currentUrl.includes('main/tests/')
+                  ? [buttonsNavStyles, underlineActive]
+                  : buttonsNavStyles
+              }
+              variant="text"
+            >
+              Тесты
+            </Button>
+          </Link>
+          <Link href="main/courses/course1">
+            <Button
+              sx={
+                currentUrl.includes('main/courses/')
+                  ? [buttonsNavStyles, underlineActive]
+                  : buttonsNavStyles
+              }
+              variant="text"
+            >
+              Курсы
+            </Button>
+          </Link>
+        </Box>
+        <Box sx={{ marginLeft: 'auto' }}>
+          <Link href="auth/login">
+            <Button
+              style={buttonsAuthStyles}
+              sx={{
+                color: '#223355',
+                '&:hover': {
+                  backgroundColor: '#223355',
+                  color: '#fff'
+                }
+              }}
+            >
+              Войти
+            </Button>
+          </Link>
+          <Link href="auth/signup">
+            <Button
+              variant="contained"
+              style={buttonsAuthStyles}
+              sx={{
+                marginLeft: '10px',
+                background: '#5568ff;',
+                color: '#fff',
+                '&:hover': {
+                  backgroundColor: '#58c924',
+                  color: '#fff'
+                }
+              }}
+            >
+              Регистрация
+            </Button>
+          </Link>
+        </Box>
+      </Toolbar>
+    </AppBar>
+  );
 };
 
 export default Nav;
