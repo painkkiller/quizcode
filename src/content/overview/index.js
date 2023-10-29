@@ -1,6 +1,7 @@
 
-import Nav from './Nav';
+
 import Main from "./Main";
+import Nav from "./Navbar";
 
 
 
@@ -10,8 +11,8 @@ import Main from "./Main";
 function Overview() {
   return (
     <>
-      <Nav/>
-      <Main/>
+      <Nav />
+      <Main />
     </>
   );
 }
