@@ -8,6 +8,8 @@ import {
   Button,
   ListItem
 } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { NavLink as RouterLink } from 'react-router-dom';
 import { SidebarContext } from 'src/contexts/SidebarContext';
 import DesignServicesTwoToneIcon from '@mui/icons-material/DesignServicesTwoTone';
@@ -160,6 +162,12 @@ const SubMenuWrapper = styled(Box)(
 
 function SidebarMenu() {
   const { closeSidebar } = useContext(SidebarContext);
+  const { course } = useSelector(state => state.course);
+
+  const onTopicClick = (e) => {
+
+  }
+
 
   return (
     <>
@@ -185,38 +193,29 @@ function SidebarMenu() {
           component="div"
           subheader={
             <ListSubheader component="div" disableSticky>
-              Курсы
+              Содержание
             </ListSubheader>
           }
         >
-          <SubMenuWrapper>
+           <SubMenuWrapper>
             <List component="div">
-              <ListItem component="div">
+          {
+            course?.topics ? Object.keys(course?.topics).map(topic => {
+              
+              return (<ListItem component="div">
                 <Button
                   disableRipple
-                  component={RouterLink}
-                  onClick={closeSidebar}
-                  to="/main/courses/course1"
-                  startIcon={<BrightnessLowTwoToneIcon />}
+                  onClick={onTopicClick}
                 >
-                  Курс 1
+                 { topic }
                 </Button>
-              </ListItem>
-              <ListItem component="div">
-                <Button
-                  disableRipple
-                  component={RouterLink}
-                  onClick={closeSidebar}
-                  to="/main/courses/course2"
-                  startIcon={<MmsTwoToneIcon />}
-                >
-                  Курс 2
-                </Button>
-              </ListItem>
+              </ListItem>)
+            }) : null
+          }
             </List>
           </SubMenuWrapper>
         </List>
-        <List
+        {/* <List
           component="div"
           subheader={
             <ListSubheader component="div" disableSticky>
@@ -250,7 +249,7 @@ function SidebarMenu() {
               </ListItem>
             </List>
           </SubMenuWrapper>
-        </List>
+        </List> */}
       </MenuWrapper>
     </>
   );
