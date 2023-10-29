@@ -1,5 +1,8 @@
+
+import Nav from './Nav';
 import Main from "./Main";
-import Nav from "./Navbar";
+
+
 
 
 
