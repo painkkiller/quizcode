@@ -35,7 +35,9 @@ const Nav = () => {
                }
             }} variant="text">Тесты</Button>
             <Button sx={{
-               marginLeft: 'auto', color: '#223355', fontSize: '16px', textTransform: 'uppercase', fontWeight: 'light', letterSpacing: 1, '&:hover': {
+               marginLeft: 'auto', color: '#223355', fontSize: '16px', textTransform: 'uppercase', fontWeight: 'light', letterSpacing: 1,
+               transition: 'all 0.1s ease',
+               '&:hover': {
                   backgroundColor: '#223355',
                   color: '#fff',
                }
@@ -52,6 +54,7 @@ const Nav = () => {
                   textTransform: 'uppercase',
                   fontWeight: 'light',
                   letterSpacing: 1,
+                  transition: 'all 0.3s ease',
                   '&:hover': {
                      backgroundColor: '#58c924',
                      color: '#fff',
