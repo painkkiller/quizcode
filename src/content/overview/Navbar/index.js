@@ -9,7 +9,7 @@ const buttonsNavStyles = {
   textTransform: 'uppercase',
   fontWeight: 'light',
   letterSpacing: 1,
-  height: '70px',
+  height: '80px',
   padding: '0',
   borderRadius: '0',
   transition: 'all 0.3s ease',
@@ -57,7 +57,13 @@ const Nav = () => {
     <AppBar
       position="static"
       variant="elevation"
-      sx={{ background: '#FFFFFF', paddingLeft: '16px', paddingRight: '16px' }}
+      sx={{
+        background: '#FFFFFF',
+        paddingLeft: '16px',
+        boxShadow:
+          '0px 2px 8px -3px rgba(34, 51, 84, 0.2), 0px 5px 22px -4px rgba(34, 51, 84, 0.1);',
+        paddingRight: '16px'
+      }}
     >
       <Toolbar>
         <Box sx={{ display: 'flex', flexDirection: 'row' }}>
