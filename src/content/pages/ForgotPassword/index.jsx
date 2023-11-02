@@ -4,26 +4,26 @@ import { useNavigate } from 'react-router-dom';
 
 const FlexBox = styled(Box)(() => ({
   display: 'flex',
-  alignItems: 'center',
+  alignItems: 'center'
 }));
 
 const JustifyBox = styled(FlexBox)(() => ({
-  justifyContent: 'center',
+  justifyContent: 'center'
 }));
 
 const ContentBox = styled(Box)(({ theme }) => ({
   padding: 32,
-  background: theme.palette.background.default,
+  background: theme.palette.background.default
 }));
 
 const ForgotPasswordRoot = styled(JustifyBox)(() => ({
-  background: '#1A2038',
+  background: '#5568ff',
   minHeight: '100vh !important',
   '& .card': {
     maxWidth: 800,
     margin: '1rem',
-    borderRadius: 12,
-  },
+    borderRadius: 12
+  }
 }));
 
 const ForgotPassword = () => {
@@ -40,7 +40,11 @@ const ForgotPassword = () => {
         <Grid container>
           <Grid item xs={12}>
             <JustifyBox p={4}>
-              <img width="300" src="/assets/images/illustrations/dreamer.svg" alt="" />
+              <img
+                width="300"
+                src="/assets/images/illustrations/dreamer.svg"
+                alt=""
+              />
             </JustifyBox>
 
             <ContentBox>
@@ -56,16 +60,34 @@ const ForgotPassword = () => {
                   sx={{ mb: 3, width: '100%' }}
                 />
 
-                <Button fullWidth variant="contained" color="primary" type="submit">
+                <Button
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  type="submit"
+                  sx={{
+                    backgroundColor: '#5568ff',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      backgroundColor: '#58c924'
+                    }
+                  }}
+                >
                   Reset Password
                 </Button>
 
                 <Button
                   fullWidth
-                  color="primary"
                   variant="outlined"
                   onClick={() => navigate(-1)}
-                  sx={{ mt: 2 }}
+                  sx={{
+                    mt: 2,
+                    color: '#5568ff',
+                    borderColor: '#5568ff',
+                    '&:hover': {
+                      backgroundColor: '#fff'
+                    }
+                  }}
                 >
                   Go Back
                 </Button>

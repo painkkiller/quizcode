@@ -1,6 +1,6 @@
 import { LoadingButton } from '@mui/lab';
-import { Card, Checkbox, Grid, TextField } from '@mui/material';
-import { Box, styled, useTheme } from '@mui/material';
+import { Card, Checkbox, Grid, TextField, Typography } from '@mui/material';
+import { Box, styled } from '@mui/material';
 import { Paragraph } from 'src/components/Typography';
 import useAuth from 'src/hooks/useAuth';
 import { Formik } from 'formik';
@@ -20,7 +20,7 @@ const ContentBox = styled(Box)(() => ({
 }));
 
 const JWTRoot = styled(JustifyBox)(() => ({
-  background: '#1A2038',
+  background: '#5568ff',
   minHeight: '100% !important',
   '& .card': {
     maxWidth: 800,
@@ -44,11 +44,13 @@ const validationSchema = Yup.object().shape({
   password: Yup.string()
     .min(6, 'Password must be 6 character length')
     .required('Password is required!'),
-  email: Yup.string().email('Invalid Email address').required('Email is required!')
+  email: Yup.string()
+    .email('Invalid Email address')
+    .required('Email is required!')
 });
 
 const JwtLogin = () => {
-  const theme = useTheme();
+  // const theme = useTheme();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
@@ -70,7 +72,15 @@ const JwtLogin = () => {
         <Grid container>
           <Grid item sm={6} xs={12}>
             <JustifyBox p={4} height="100%" sx={{ minWidth: 320 }}>
-              <img src="/static/images/illustrations/dreamer.svg" width="100%" alt="" />
+              <Typography
+                sx={{
+                  color: '#5568ff',
+                  fontSize: '40px',
+                  letterSpacing: 1
+                }}
+              >
+                QuizCode
+              </Typography>
             </JustifyBox>
           </Grid>
 
@@ -81,7 +91,14 @@ const JwtLogin = () => {
                 initialValues={initialValues}
                 validationSchema={validationSchema}
               >
-                {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
+                {({
+                  values,
+                  errors,
+                  touched,
+                  handleChange,
+                  handleBlur,
+                  handleSubmit
+                }) => (
                   <form onSubmit={handleSubmit}>
                     <TextField
                       fullWidth
@@ -128,7 +145,7 @@ const JwtLogin = () => {
 
                       <NavLink
                         to="/auth/forgot-password"
-                        style={{ color: theme.palette.primary.main }}
+                        style={{ color: '#1A2038' }}
                       >
                         Forgot password?
                       </NavLink>
@@ -139,7 +156,14 @@ const JwtLogin = () => {
                       color="primary"
                       loading={loading}
                       variant="contained"
-                      sx={{ my: 2 }}
+                      sx={{
+                        my: 2,
+                        backgroundColor: '#5568ff',
+                        transition: 'all 0.3s ease',
+                        '&:hover': {
+                          backgroundColor: '#58c924'
+                        }
+                      }}
                     >
                       Login
                     </LoadingButton>
@@ -148,7 +172,10 @@ const JwtLogin = () => {
                       Don't have an account?
                       <NavLink
                         to="/auth/signup"
-                        style={{ color: theme.palette.primary.main, marginLeft: 5 }}
+                        style={{
+                          color: '#1A2038',
+                          marginLeft: 5
+                        }}
                       >
                         Register
                       </NavLink>

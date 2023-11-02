@@ -1,6 +1,6 @@
-import { useTheme } from '@emotion/react';
+// import { useTheme } from '@emotion/react';
 import { LoadingButton } from '@mui/lab';
-import { Card, Checkbox, Grid, TextField } from '@mui/material';
+import { Card, Checkbox, Grid, TextField, Typography } from '@mui/material';
 import { Box, styled } from '@mui/material';
 import { Paragraph } from 'src/components/Typography';
 import useAuth from 'src/hooks/useAuth';
@@ -20,7 +20,7 @@ const ContentBox = styled(JustifyBox)(() => ({
 }));
 
 const JWTRegister = styled(JustifyBox)(() => ({
-  background: '#1A2038',
+  background: '#5568ff',
   minHeight: '100vh !important',
   '& .card': {
     maxWidth: 800,
@@ -45,11 +45,13 @@ const validationSchema = Yup.object().shape({
   password: Yup.string()
     .min(6, 'Password must be 6 character length')
     .required('Password is required!'),
-  email: Yup.string().email('Invalid Email address').required('Email is required!')
+  email: Yup.string()
+    .email('Invalid Email address')
+    .required('Email is required!')
 });
 
 const JwtRegister = () => {
-  const theme = useTheme();
+  // const theme = useTheme();
   const { register } = useAuth();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -73,11 +75,15 @@ const JwtRegister = () => {
         <Grid container>
           <Grid item sm={6} xs={12}>
             <ContentBox>
-              <img
-                width="100%"
-                alt="Register"
-                src="/static/images/illustrations/posting_photo.svg"
-              />
+              <Typography
+                sx={{
+                  color: '#5568ff',
+                  fontSize: '40px',
+                  letterSpacing: 1
+                }}
+              >
+                QuizCode
+              </Typography>
             </ContentBox>
           </Grid>
 
@@ -88,7 +94,14 @@ const JwtRegister = () => {
                 initialValues={initialValues}
                 validationSchema={validationSchema}
               >
-                {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
+                {({
+                  values,
+                  errors,
+                  touched,
+                  handleChange,
+                  handleBlur,
+                  handleSubmit
+                }) => (
                   <form onSubmit={handleSubmit}>
                     <TextField
                       fullWidth
@@ -153,7 +166,15 @@ const JwtRegister = () => {
                       color="primary"
                       loading={loading}
                       variant="contained"
-                      sx={{ mb: 2, mt: 3 }}
+                      sx={{
+                        mb: 2,
+                        mt: 3,
+                        backgroundColor: '#5568ff',
+                        transition: 'all 0.3s ease',
+                        '&:hover': {
+                          backgroundColor: '#58c924'
+                        }
+                      }}
                     >
                       Regiser
                     </LoadingButton>
@@ -162,7 +183,10 @@ const JwtRegister = () => {
                       Already have an account?
                       <NavLink
                         to="/auth/login"
-                        style={{ color: theme.palette.primary.main, marginLeft: 5 }}
+                        style={{
+                          color: '#1A2038',
+                          marginLeft: 5
+                        }}
                       >
                         Login
                       </NavLink>

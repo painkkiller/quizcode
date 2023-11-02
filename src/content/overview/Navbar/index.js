@@ -48,7 +48,7 @@ const Nav = () => {
                variant="contained"
                sx={{
                   marginLeft: '10px',
-                  background: '#5568ff;',
+                  backgroundСolor: '#5568ff',
                   color: '#fff',
                   fontSize: '16px',
                   textTransform: 'uppercase',
