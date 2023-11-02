@@ -23,7 +23,6 @@ const theme = createTheme({
 
 function App() {
   const content = useRoutes(router);
-
   return (
     <ThemeProvider theme={theme}>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
