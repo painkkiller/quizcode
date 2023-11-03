@@ -85,60 +85,62 @@ const Nav = () => {
             }} variant="text">
                Главная
             </Button>
-          </Link>
-          <Link href="main/tests/tests1">
-            <Button
-              sx={
-                currentUrl.includes('main/tests/')
-                  ? [buttonsNavStyles, underlineActive]
-                  : buttonsNavStyles
-              }
-              variant="text"
-            >
-              Тесты
-            </Button>
-          </Link>
-          <Link href="main/courses/course1">
-            <Button
-              sx={
-                currentUrl.includes('main/courses/')
-                  ? [buttonsNavStyles, underlineActive]
-                  : buttonsNavStyles
-              }
-              variant="text"
-            >
-              Курсы
-            </Button>
-          </Link>
-        </Box>
-        <Box sx={{ marginLeft: 'auto' }}>
-          <Link href="auth/login">
-            <Button
-              style={buttonsAuthStyles}
-              sx={{
-                color: '#223355',
-                '&:hover': {
-                  backgroundColor: '#223355',
-                  color: '#fff',
-               }
-            }}>
-               Войти
-            </Button>
-            <Button
-              variant="contained"
-              style={buttonsAuthStyles}
-              sx={{
-                marginLeft: '10px',
-                background: '#5568ff;',
-                color: '#fff',
-                '&:hover': {
-                  backgroundColor: '#58c924',
-                  color: '#fff'
-                }
-              }}
-            >
-               Регистрация
-            </Button>
+
+            <Link href="main/tests/tests1">
+               <Button
+                  sx={
+                     currentUrl.includes('main/tests/')
+                        ? [buttonsNavStyles, underlineActive]
+                        : buttonsNavStyles
+                  }
+                  variant="text"
+               >
+                  Тесты
+               </Button>
+            </Link>
+            <Link href="main/courses/course1">
+               <Button
+                  sx={
+                     currentUrl.includes('main/courses/')
+                        ? [buttonsNavStyles, underlineActive]
+                        : buttonsNavStyles
+                  }
+                  variant="text"
+               >
+                  Курсы
+               </Button>
+            </Link>
+
+            <Box sx={{ marginLeft: 'auto' }}>
+               <Link href="auth/login">
+                  <Button
+                     style={buttonsAuthStyles}
+                     sx={{
+                        color: '#223355',
+                        '&:hover': {
+                           backgroundColor: '#223355',
+                           color: '#fff',
+                        }
+                     }}>
+                     Войти
+                  </Button>
+               </Link>
+               <Button
+                  variant="contained"
+                  style={buttonsAuthStyles}
+                  sx={{
+                     marginLeft: '10px',
+                     background: '#5568ff;',
+                     color: '#fff',
+                     '&:hover': {
+                        backgroundColor: '#58c924',
+                        color: '#fff'
+                     }
+                  }}
+               >
+                  Регистрация
+               </Button>
+            </Box>
          </Toolbar>
       </AppBar>
    );
