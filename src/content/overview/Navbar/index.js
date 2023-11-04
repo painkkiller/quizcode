@@ -4,6 +4,7 @@ import { AppBar, Toolbar, Button, Typography, Box, Link } from '@mui/material';
 import Logo from 'src/components/LogoSign';
 
 const buttonsNavStyles = {
+  mt: '2.5px',
   color: '#223355',
   fontSize: '16px',
   textTransform: 'uppercase',
@@ -102,7 +103,7 @@ const Nav = () => {
               Главная
             </Button>
           </Link>
-          <Link href="main/tests/tests1">
+          <Link href="main/tests/test1">
             <Button
               sx={
                 currentUrl.includes('main/tests/')
