@@ -125,7 +125,7 @@ const routes = [
         element: <Tests />
       },
       {
-        path: 'courses/:courseId',
+        path: 'courses/:courseId/:topicId?/:subId?',
         element: <Course />
       }
     ]

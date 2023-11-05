@@ -204,10 +204,11 @@ function SidebarMenu() {
               
               return (<ListItem component="div">
                 <Button
+                  href={`/main/courses/${course?.id}/${topic}`}
                   disableRipple
                   onClick={onTopicClick}
                 >
-                 { topic }
+                 { course?.topics[topic].name }
                 </Button>
               </ListItem>)
             }) : null

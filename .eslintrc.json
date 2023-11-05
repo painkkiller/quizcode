@@ -63,6 +63,7 @@
     "react/jsx-curly-brace-presence": ["off"],
     "react/no-unstable-nested-components": ["off"],
     "object-shorthand": ["off"],
-    "no-unused-vars": ["off"]
+    "no-unused-vars": ["off"],
+    "no-else-return": 1
   }
 }
