@@ -3,10 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-import { Container, Typography, Box, styled } from '@mui/material';
+import { Container, Typography, Box, Card, styled } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { Interweave } from 'interweave';
 import { loadCourse } from './courseSlice';
+import RegExpInput from './RegExpInput';
 
 
 const CourseWrapper = styled(Container)(
@@ -26,7 +28,6 @@ function Course() {
   console.log('course', course);
 
   useEffect(async () => {
-
     const response = await axios.get(`/static/courses/${courseId}.json`);
     dispatch(loadCourse(response.data));
   }, []);
@@ -39,7 +40,7 @@ function Course() {
     } else if (subId && course?.topics) {
       return course?.topics[topicId].subs[Number(subId)]?.title;
     }
-    return "Wrong title";
+    return "Загружаем...";
   }
 
   const getBody = () => {
@@ -50,7 +51,14 @@ function Course() {
     } else if (subId && course?.topics) {
       return course?.topics[topicId].subs[Number(subId)]?.body;
     }
-    return "Wrong body";
+    return "Загружаем...";
+  }
+
+  const getInput = () => {
+    if (subId && course?.topics) {
+      return course?.topics[topicId].subs[Number(subId)]?.input;
+    }
+    return {};
   }
 
   const getStepper = () => {
@@ -71,10 +79,12 @@ function Course() {
 
   return (
     <CourseWrapper>
-      { courseId }, { topicId } , { subId }
       { getStepper() }
       <Typography variant='h1' gutterBottom>{getTitle()}</Typography><br/>
-      <Typography variant="body1" gutterBottom>{getBody()}</Typography><br/>
+      <Card style={{ padding: '20px' }}>
+        <Interweave content={getBody()} />
+      </Card>
+      <RegExpInput input={ getInput()} />
     </CourseWrapper>
   );
 }
