@@ -24,7 +24,7 @@ const ForgotPassword = Loader(lazy(() => import('src/content/pages/ForgotPasswor
 
 
 const Tests = Loader(lazy(() => import('src/content/pages/Tests/index')));
-const Courses = Loader(lazy(() => import('src/content/pages/Courses/index')));
+const Course = Loader(lazy(() => import('src/content/applications/Course/index')));
 
 const UserProfile = Loader(
   lazy(() => import('src/content/applications/Users/profile'))
@@ -125,8 +125,8 @@ const routes = [
         element: <Tests />
       },
       {
-        path: 'courses/:courseId',
-        element: <Courses />
+        path: 'courses/:courseId/:topicId?/:subId?',
+        element: <Course />
       }
     ]
   },
