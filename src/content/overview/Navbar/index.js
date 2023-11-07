@@ -1,6 +1,9 @@
 import React from 'react';
 import { AppBar, Toolbar, Button, Typography } from '@mui/material';
 import Logo from 'src/components/LogoSign';
+import LoginIcon from '@mui/icons-material/Login';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import HowToRegIcon from '@mui/icons-material/HowToReg';
 
 const Nav = () => {
    return (
@@ -12,49 +15,46 @@ const Nav = () => {
          <Toolbar>
             <Logo />
             <Typography
+
+               color='black'
                sx={{
-                  color: '#223355',
                   fontSize: '25px',
                   marginRight: '15px',
                   fontWeight: 'bold',
-                  letterSpacing: 1
+                  letterSpacing: 2
                }}
             >
                QuizCode
             </Typography>
-            <Button sx={{
-               color: '#223355', fontSize: '16px', textTransform: 'uppercase', fontWeight: 'light', letterSpacing: 1, '&:hover': {
-                  backgroundColor: '#fff'
-               }
-            }} variant="text">
-               Главная
-            </Button>
-            <Button sx={{
-               color: '#223355', fontSize: '16px', textTransform: 'uppercase', fontWeight: 'light', letterSpacing: 1, '&:hover': {
-                  backgroundColor: '#fff'
-               }
-            }} variant="text">Тесты</Button>
-            <Button sx={{
-               marginLeft: 'auto', color: '#223355', fontSize: '16px', textTransform: 'uppercase', fontWeight: 'light', letterSpacing: 1,
-               transition: 'all 0.3s ease',
-               '&:hover': {
-                  backgroundColor: '#223355',
-                  color: '#fff',
-               }
-            }}>
+            <Button
+               endIcon={<LoginIcon />}
+               variant="contained"
+               sx={{
+                  marginLeft: 'auto',
+                  textTransform: 'uppercase',
+                  letterSpacing: 2,
+                  transition: 'all 0.3s ease',
+                  color: '#223355',
+                  background: "#fff",
+                  borderColor: '#223355',
+                  '&:hover': {
+                     backgroundColor: '#223355',
+                     color: '#fff',
+                     borderColor: '#223355'
+                  }
+               }}>
                Войти
             </Button>
             <Button
                variant="contained"
+               endIcon={<AddCircleOutlineIcon />}
                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
                   marginLeft: '10px',
-                  background: '#5568ff;',
-                  color: '#fff',
-                  fontSize: '16px',
                   textTransform: 'uppercase',
-                  fontWeight: 'light',
-                  letterSpacing: 1,
                   transition: 'all 0.3s ease',
+                  letterSpacing: 2,
                   '&:hover': {
                      backgroundColor: '#58c924',
                      color: '#fff',

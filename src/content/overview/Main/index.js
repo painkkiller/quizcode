@@ -1,55 +1,90 @@
-import { Box, Container, Typography } from '@mui/material';
+import { Container, Grid, Typography, Button } from '@mui/material';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import IconButton from '@mui/material/IconButton';
+import reg from './reg.png';
+import typeofpng from './typeof.png';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+// Не пройдет 
+import PanoramaFishEyeIcon from '@mui/icons-material/PanoramaFishEye';
+// Пройден 
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import CardItem from '../Card';
+
+const testData = [
+  {
+    id: 1,
+    title: 'Регулярные выражения',
+    finished: true,
+    type: 'Курс',
+    image: reg,
+    desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum assumenda, suscipit quae, quibusdam sequi voluptatum voluptatem sapiente voluptate accusantium culpa, sed veniam praesentium libero ut nobis unde iste laborum vel.',
+    level: 'Продвинутый'
+  },
+  {
+    id: 2,
+    title: 'Типы данных',
+    finished: true,
+    type: 'Тест',
+    image: typeofpng,
+    desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum assumenda, suscipit quae, quibusdam sequi voluptatum voluptatem sapiente voluptate accusantium culpa, sed veniam praesentium libero ut nobis unde iste laborum vel.',
+    level: 'Начинающий'
+  },
+  {
+    id: 3,
+    title: 'Регулярные выражения',
+    finished: false,
+    type: 'Курс',
+    image: reg,
+    desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum assumenda, suscipit quae, quibusdam sequi voluptatum voluptatem sapiente'
+  },
+  {
+    id: 4,
+    title: 'Регулярные выражения',
+    finished: false,
+    type: 'Курс',
+    image: reg,
+    desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum assumenda, suscipit quae, quibusdam sequi voluptatum voluptatem sapiente voluptate accusantium culpa, sed veniam praesentium libero ut nobis unde iste laborum vel.'
+  },
+  {
+    id: 5,
+    title: 'Регулярные выражения',
+    finished: false,
+    type: 'Курс',
+    image: reg,
+    desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum assumenda, suscipit quae, quibusdam sequi voluptatum voluptatem sapiente voluptate accusantium culpa, sed veniam praesentium libero ut nobis unde iste laborum vel.'
+  },
+  {
+    id: 6,
+    title: 'Регулярные выражения',
+    finished: false,
+    type: 'Курс',
+    image: reg,
+    desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum assumenda, suscipit quae, quibusdam sequi voluptatum voluptatem sapiente voluptate accusantium culpa, sed veniam praesentium libero ut nobis unde iste laborum vel.'
+  },
+]
 
 function Main() {
   return (
-    <Box
-      sx={{
-        backgroundImage:
-          'url(https://plus.unsplash.com/premium_photo-1661281412140-dfb328ae967b?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
-        minHeight: '100vh',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover'
-      }}
+    <Container sx={{ p: 2.5, display: 'flex', justifyContent: 'center' }}
     >
-      <Container>
-        <Box
-          sx={{
-            display: 'flex',
-            position: 'relative',
-            alignItems: 'center',
-            justifyContent: 'left',
-            padding: '20px'
-          }}
-        >
-          <Box sx={{ position: 'relative', top: '50%', bottom: '50%' }}>
-            <Typography
-              variant="h6"
-              sx={{
-                textAlign: 'left',
-                alignItems: 'center',
-                color:'#282F3F',
-                maxWidth: '500px',
-                fontSize: '25px',
-                fontWeight: '700'
-              }}
-            >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, tenetur.
-            </Typography>
-            <Typography
-              sx={{
-                color:'#282F3F',
-                textAlign: 'left',
-                alignItems: 'center',
-                maxWidth: '500px',
-                fontSize: '16px'
-              }}
-            >
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima dolores, soluta tenetur ipsa dignissimos deleniti at optio quae alias reprehenderit voluptates placeat laudantium exercitationem repudiandae ad nihil. Temporibus, error maiores!
-            </Typography>
-          </Box>
-        </Box>
-      </Container>
-    </Box>
+      <Grid container
+        rowSpacing={2}
+        columnSpacing={{ xs: 1, sm: 2, md: 2 }}
+        alignItems="center"
+        maxWidth="1150px"
+      >
+
+        {testData.map((data) => {
+          return (<CardItem data={data} key={data.id} />)
+        })}
+
+      </Grid>
+
+    </Container >
   );
 }
 
