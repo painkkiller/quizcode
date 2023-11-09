@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -22,6 +22,8 @@ function Course() {
 
   let { courseId, topicId, subId } = useParams();
   const dispatch = useDispatch();
+
+  const [ inputValue, setInputValue ] = useState('');
 
   const { course } = useSelector(state => state.course)
 
@@ -75,6 +77,10 @@ function Course() {
     }
     return null;
   }
+
+  const checkRegExp = () => {
+
+  }
   
 
   return (
@@ -84,7 +90,7 @@ function Course() {
       <Card style={{ padding: '20px' }}>
         <Interweave content={getBody()} />
       </Card>
-      <RegExpInput input={ getInput()} />
+      <RegExpInput value={inputValue} setInputValue={setInputValue} input={getInput()} />
     </CourseWrapper>
   );
 }
