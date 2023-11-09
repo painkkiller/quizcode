@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Card, Typography, Button, styled } from '@mui/material';
 import ErrorIcon from '@mui/icons-material/Error';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
@@ -5,29 +6,56 @@ import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import { Interweave } from 'interweave';
 
+const regExpChecker = (strInput, input, index, regExpStr) => {
+    const reg = new RegExp(regExpStr, "g");
+    const arr = strInput.match(reg);
+    const answer = input.body.table[index].answer;
+    return arr.join('') === answer;
+}
 
+const isTaskComplete = (input, regExpStr) => {
+    if (!input.body) return false;
+    const reg = new RegExp(regExpStr, "g");
+    const result = [];
+    for (let i = 0; i < input.body.table.length; i++) {
+        const strInput = input.body.table[i].text;
+        const answer = input.body.table[i].answer;
+        const arr = strInput.match(reg);
+        result.push(arr.join('') === answer);
+    }
+    return result.every(item => item);
+}
 
-function RegExpInput ({ input, value, setInputValue, checker }) {
+function RegExpInput ({ input, value, setInputValue }) {
+
+    const [isDirty, setDirty] = useState(false);
 
     console.log(input, value);
 
-    const getSymbol = (isValid) => {
+    const getSymbol = (strInput, index) => {
+        if (!isDirty) {
+            return null;
+        }
+        const isValid = regExpChecker(strInput, input, index, value);
         return isValid ? <CheckCircleIcon style={{ color: "green" }} /> : <ErrorIcon style={{ color: "red" }} />;
     }
 
     const replaceByRegExp = (text) => {
-        const reg = new RegExp(value, "gi");
+        const reg = new RegExp(value, "g");
         if (value && reg.test(text)) {
-            let txt = text.replace(reg,  (match) => `<span style="color: orange">${match}</span>`);
-            console.log(txt);
-            return txt;
+            return text.replace(reg,  (match) => `<span style="color: orange">${match}</span>`);
         }
         return text;
     }
 
     const onChange = (e) => {
         console.log(e.target.value);
+        if (!isDirty) setDirty(true);
         setInputValue(e.target.value);
+    }
+
+    const onNext = (e) => {
+        console.log('onNext');
     }
 
     return (
@@ -41,7 +69,7 @@ function RegExpInput ({ input, value, setInputValue, checker }) {
                             <tr key={i}>
                                 <td style={{ textAlign: 'left' }}>{row.task}</td>
                                 <td style={{ textAlign: 'center' }}><Interweave content={replaceByRegExp(row.text)} /></td>
-                                <td style={{ textAlign: 'right' }}>{getSymbol(false)}</td>
+                                <td style={{ textAlign: 'right' }}>{getSymbol(row.text, i)}</td>
                             </tr>
                         );
                     })
@@ -55,11 +83,11 @@ function RegExpInput ({ input, value, setInputValue, checker }) {
                         id="standard-size-normal"
                         InputProps={{
                             startAdornment: <InputAdornment position="start"><strong>/</strong></InputAdornment>,
-                            endAdornment: <InputAdornment position="start"><strong>/gi</strong></InputAdornment>,
+                            endAdornment: <InputAdornment position="start"><strong>/g</strong></InputAdornment>,
                         }}
                         defaultValue=""
                     />
-                    <Button sx={{ height: '53px', width: '10%', marginLeft: '5%'}} variant="outlined">Далее</Button>
+                    <Button onClick={onNext} disabled={!isTaskComplete(input, value)} sx={{ height: '53px', width: '10%', marginLeft: '5%'}} variant="outlined">Далее</Button>
             </div>
         </Card>
         );
