@@ -26,11 +26,9 @@ const isTaskComplete = (input, regExpStr) => {
     return result.every(item => item);
 }
 
-function RegExpInput ({ input, value, setInputValue }) {
+function RegExpInput ({ input, value, setInputValue, onNext }) {
 
     const [isDirty, setDirty] = useState(false);
-
-    console.log(input, value);
 
     const getSymbol = (strInput, index) => {
         if (!isDirty) {
@@ -49,13 +47,8 @@ function RegExpInput ({ input, value, setInputValue }) {
     }
 
     const onChange = (e) => {
-        console.log(e.target.value);
         if (!isDirty) setDirty(true);
         setInputValue(e.target.value);
-    }
-
-    const onNext = (e) => {
-        console.log('onNext');
     }
 
     return (

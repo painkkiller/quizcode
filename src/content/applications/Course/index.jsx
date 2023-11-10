@@ -6,9 +6,9 @@ import StepLabel from '@mui/material/StepLabel';
 import { Container, Typography, Box, Card, styled } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { Interweave } from 'interweave';
 import { loadCourse } from './courseSlice';
-import RegExpInput from './RegExpInput';
+import Input from './inputs/Input';
+import Body from './Body';
 
 
 const CourseWrapper = styled(Container)(
@@ -22,8 +22,6 @@ function Course() {
 
   let { courseId, topicId, subId } = useParams();
   const dispatch = useDispatch();
-
-  const [ inputValue, setInputValue ] = useState('');
 
   const { course } = useSelector(state => state.course)
 
@@ -63,6 +61,10 @@ function Course() {
     return {};
   }
 
+  const onNext = (e) => {
+    console.log('onNext');
+  }
+
   const getStepper = () => {
     if (course?.topics && course?.topics[topicId] && course?.topics[topicId].subs.length > 1) {
       return (
@@ -78,19 +80,14 @@ function Course() {
     return null;
   }
 
-  const checkRegExp = () => {
-
-  }
-  
-
   return (
     <CourseWrapper>
       { getStepper() }
       <Typography variant='h1' gutterBottom>{getTitle()}</Typography><br/>
       <Card style={{ padding: '20px' }}>
-        <Interweave content={getBody()} />
+        <Body body={getBody()} />
       </Card>
-      <RegExpInput value={inputValue} setInputValue={setInputValue} input={getInput()} />
+      <Input onNext={onNext} input={getInput()} />
     </CourseWrapper>
   );
 }
