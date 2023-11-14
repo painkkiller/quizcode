@@ -6,6 +6,7 @@ import StepLabel from '@mui/material/StepLabel';
 import { Container, Typography, Box, Card, styled } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { moveNext } from "src/utils";
 import { loadCourse } from './courseSlice';
 import Input from './inputs/Input';
 import Body from './Body';
@@ -62,7 +63,11 @@ function Course() {
   }
 
   const onNext = (e) => {
-    console.log('onNext');
+    console.log('onNext', topicId, subId);
+  }
+
+  const getNextLink = () => {
+    return moveNext(course, topicId, subId);
   }
 
   const getStepper = () => {
@@ -87,7 +92,7 @@ function Course() {
       <Card style={{ padding: '20px' }}>
         <Body body={getBody()} />
       </Card>
-      <Input onNext={onNext} input={getInput()} />
+      <Input onNext={onNext} link={getNextLink()} input={getInput()} />
     </CourseWrapper>
   );
 }
