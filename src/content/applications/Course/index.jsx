@@ -67,7 +67,9 @@ function Course() {
   }
 
   const getNextLink = () => {
-    return moveNext(course, topicId, subId);
+    const next = moveNext(course, topicId, subId);
+    console.log('next link', next);
+    return next;
   }
 
   const getStepper = () => {

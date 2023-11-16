@@ -202,7 +202,7 @@ function SidebarMenu() {
           {
             course?.topics ? Object.keys(course?.topics).map(topic => {
               
-              return (<ListItem component="div">
+              return (<ListItem key={topic} component="div">
                 <Button
                   href={`/main/courses/${course?.id}/${topic}`}
                   disableRipple

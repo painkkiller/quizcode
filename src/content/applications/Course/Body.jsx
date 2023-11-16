@@ -10,12 +10,12 @@ function Body ({ body }) {
 
     
 
-    const renderType = (content) => {
+    const renderType = (content, i) => {
         if (content.type === 'html') {
-            return <Interweave content={content.text} />;
+            return <Interweave key={i} content={content.text} />;
         } else if (content.type === 'javascript') {
             return (
-                <SyntaxHighlighter language="javascript" style={docco}>
+                <SyntaxHighlighter key={i} language="javascript" style={docco}>
                     {content.text}
                 </SyntaxHighlighter>
             );
@@ -24,7 +24,7 @@ function Body ({ body }) {
     }
 
     if (Array.isArray(body)) {
-        return body.map(item => renderType(item));
+        return body.map((item, i) => renderType(item, i));
     } else {
         return <Interweave content={body.text} />
     }
