@@ -6,8 +6,9 @@ import StepLabel from '@mui/material/StepLabel';
 import { Container, Typography, Box, Card, Tooltip, styled } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { moveNext } from "src/utils";
-import { loadCourse } from './courseSlice';
+import { moveNext, setProgress } from "src/utils";
+import { loadCourse, updateProgress } from './courseSlice';
+import { getUserProgress } from '../../../services/progress';
 import Input from './inputs/Input';
 import Body from './Body';
 
@@ -24,13 +25,15 @@ function Course() {
   let { courseId, topicId, subId } = useParams();
   const dispatch = useDispatch();
 
-  const { course } = useSelector(state => state.course)
+  const { course, progress } = useSelector(state => state.course);
 
   console.log('course', course);
 
   useEffect(async () => {
     const response = await axios.get(`/static/courses/${courseId}.json`);
-    dispatch(loadCourse(response.data));
+    const progress = getUserProgress('user') || {}; // userId - user !!!
+    dispatch(loadCourse(response.data)); // TODO: Сделать одним хуком или одним экшеном?
+    dispatch(updateProgress(progress));
   }, []);
 
   const getTitle = () => {
@@ -64,6 +67,8 @@ function Course() {
 
   const onNext = (e) => {
     console.log('onNext', topicId, subId);
+    const newProgress = setProgress(progress, topicId, subId);
+    dispatch(updateProgress(newProgress));
   }
 
   const getNextLink = () => {

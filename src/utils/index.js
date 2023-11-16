@@ -9,3 +9,12 @@ export function moveNext(course, topicId, subId) {
         return `/main/courses/${course?.id}/${course.topics[topicId].nextTopic}/0`;
     }
 }
+
+export function setProgress (progress, topicId, subId) {
+    if (!progress[topicId]) {
+        progress[topicId] = [];
+    } else {
+        progress[topicId][subId] = true;
+    }
+    return progress;
+}
