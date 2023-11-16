@@ -204,7 +204,7 @@ function SidebarMenu() {
               
               return (<ListItem key={topic} component="div">
                 <Button
-                  href={`/main/courses/${course?.id}/${topic}`}
+                  href={`/main/courses/${course?.id}/${topic}/0`}
                   disableRipple
                   onClick={onTopicClick}
                 >

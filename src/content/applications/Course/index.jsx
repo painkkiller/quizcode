@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-import { Container, Typography, Box, Card, styled } from '@mui/material';
+import { Container, Typography, Box, Card, Tooltip, styled } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { moveNext } from "src/utils";
@@ -74,11 +74,19 @@ function Course() {
 
   const getStepper = () => {
     if (course?.topics && course?.topics[topicId] && course?.topics[topicId].subs.length > 1) {
+
       return (
         <Box sx={{ width: '100%' }}>
-          <Stepper activeStep={subId}>
+          <Stepper activeStep={Number(subId)}>
             {
-              course?.topics[topicId].subs.map((sub, i) => <Step key={i} completed={subId > i}><StepLabel> </StepLabel></Step>)
+              course?.topics[topicId].subs.map((sub, i) =>{
+                const title = course?.topics[topicId].subs[i].title;
+                return (
+                  <Tooltip title={title}>
+                    <Step key={i} completed={Number(subId) > i}>
+                      <StepLabel />
+                    </Step>
+                  </Tooltip>)})
             }
           </Stepper>
         </Box>
