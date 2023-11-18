@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { setUserProgress } from '../../../services/progress';
+import { setUserProgress, getUserProgress } from '../../../services/progress';
 
 export const courseSlice = createSlice({
   name: 'course',
@@ -10,10 +10,13 @@ export const courseSlice = createSlice({
   reducers: {
     loadCourse: (state, action) => {
       state.course = action.payload;
+      state.progress = getUserProgress('userId', state.course.id);
     },
     updateProgress: (state, action) => {
-      state.progress = action.payload;
-      setUserProgress(action.payload);
+      const { progress, userId, courseId } = action.payload;
+      state.progress = progress;
+      console.log('updateProgress', progress);
+      setUserProgress(userId, courseId, progress);
     }
   },
 })

@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
-import { Container, Typography, Box, Card, Tooltip, styled } from '@mui/material';
+import { Container, Typography, Card, styled } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 import { moveNext, setProgress } from "src/utils";
 import { loadCourse, updateProgress } from './courseSlice';
-import { getUserProgress } from '../../../services/progress';
+// import { getUserProgress } from '../../../services/progress';
 import Input from './inputs/Input';
 import Body from './Body';
+import TopicStepper from './TopicStepper';
 
 
 const CourseWrapper = styled(Container)(
@@ -25,15 +24,17 @@ function Course() {
   let { courseId, topicId, subId } = useParams();
   const dispatch = useDispatch();
 
+  const navigate = useNavigate();
+
   const { course, progress } = useSelector(state => state.course);
 
-  console.log('course', course);
+  console.log('course', course, progress);
 
   useEffect(async () => {
     const response = await axios.get(`/static/courses/${courseId}.json`);
-    const progress = getUserProgress('user') || {}; // userId - user !!!
+    // const progress = getUserProgress('userId', courseId) || {}; // userId - user !!!
     dispatch(loadCourse(response.data)); // TODO: Сделать одним хуком или одним экшеном?
-    dispatch(updateProgress(progress));
+    // dispatch(updateProgress(progress));
   }, []);
 
   const getTitle = () => {
@@ -66,9 +67,12 @@ function Course() {
   }
 
   const onNext = (e) => {
-    console.log('onNext', topicId, subId);
+    console.log('onNext', topicId, subId, progress);
     const newProgress = setProgress(progress, topicId, subId);
-    dispatch(updateProgress(newProgress));
+    console.log('newProgress', newProgress);
+    dispatch(updateProgress({ progress: newProgress, userId: 'userId', courseId }));
+    const nextLink = getNextLink();
+    navigate(nextLink);
   }
 
   const getNextLink = () => {
@@ -77,32 +81,9 @@ function Course() {
     return next;
   }
 
-  const getStepper = () => {
-    if (course?.topics && course?.topics[topicId] && course?.topics[topicId].subs.length > 1) {
-
-      return (
-        <Box sx={{ width: '100%' }}>
-          <Stepper activeStep={Number(subId)}>
-            {
-              course?.topics[topicId].subs.map((sub, i) =>{
-                const title = course?.topics[topicId].subs[i].title;
-                return (
-                  <Tooltip title={title}>
-                    <Step key={i} completed={Number(subId) > i}>
-                      <StepLabel />
-                    </Step>
-                  </Tooltip>)})
-            }
-          </Stepper>
-        </Box>
-      );
-    }
-    return null;
-  }
-
   return (
     <CourseWrapper>
-      { getStepper() }
+      <TopicStepper course={course} topicId={topicId} subId={subId} progress={progress} />
       <Typography variant='h1' gutterBottom>{getTitle()}</Typography><br/>
       <Card style={{ padding: '20px' }}>
         <Body body={getBody()} />
