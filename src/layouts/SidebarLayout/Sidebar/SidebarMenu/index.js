@@ -6,17 +6,14 @@ import {
   List,
   styled,
   Button,
-  ListItem
+  ListItem,
+  useTheme
 } from '@mui/material';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import { NavLink as RouterLink } from 'react-router-dom';
 import { SidebarContext } from 'src/contexts/SidebarContext';
 import DesignServicesTwoToneIcon from '@mui/icons-material/DesignServicesTwoTone';
-import BrightnessLowTwoToneIcon from '@mui/icons-material/BrightnessLowTwoTone';
-import MmsTwoToneIcon from '@mui/icons-material/MmsTwoTone';
-import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
-import DisplaySettingsTwoToneIcon from '@mui/icons-material/DisplaySettingsTwoTone';
+import { isTopicFunfilled } from '../../../../utils';
 
 const MenuWrapper = styled(Box)(
   ({ theme }) => `
@@ -161,13 +158,11 @@ const SubMenuWrapper = styled(Box)(
 );
 
 function SidebarMenu() {
+
+  const theme = useTheme();
+
   const { closeSidebar } = useContext(SidebarContext);
-  const { course } = useSelector(state => state.course);
-
-  const onTopicClick = (e) => {
-
-  }
-
+  const course = useSelector(state => state.course);
 
   return (
     <>
@@ -200,15 +195,15 @@ function SidebarMenu() {
            <SubMenuWrapper>
             <List component="div">
           {
-            course?.topics ? Object.keys(course?.topics).map(topic => {
+            course?.content?.topics ? Object.keys(course?.content?.topics).map(topic => {
               
               return (<ListItem key={topic} component="div">
                 <Button
-                  href={`/main/courses/${course?.id}/${topic}/0`}
+                  style={{ color: isTopicFunfilled(course, topic) ? 'white' : `${theme.colors.alpha.trueWhite[70]}` }}
+                  href={`/main/courses/${course?.content?.id}/${topic}/0`}
                   disableRipple
-                  onClick={onTopicClick}
                 >
-                 { course?.topics[topic].name }
+                 { course?.content?.topics[topic].name }
                 </Button>
               </ListItem>)
             }) : null

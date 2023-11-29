@@ -4,13 +4,13 @@ import { setUserProgress, getUserProgress } from '../../../services/progress';
 export const courseSlice = createSlice({
   name: 'course',
   initialState: {
-    course: {},
+    content: {},
     progress: {}
   },
   reducers: {
     loadCourse: (state, action) => {
-      state.course = action.payload;
-      state.progress = getUserProgress('userId', state.course.id);
+      state.content = action.payload;
+      state.progress = getUserProgress('userId', state.content.id);
     },
     updateProgress: (state, action) => {
       const { progress, userId, courseId } = action.payload;
