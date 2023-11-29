@@ -32,9 +32,7 @@ function Course() {
 
   useEffect(async () => {
     const response = await axios.get(`/static/courses/${courseId}.json`);
-    // const progress = getUserProgress('userId', courseId) || {}; // userId - user !!!
     dispatch(loadCourse(response.data)); // TODO: Сделать одним хуком или одним экшеном?
-    // dispatch(updateProgress(progress));
   }, []);
 
   const getTitle = () => {
