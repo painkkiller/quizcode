@@ -26,9 +26,9 @@ function Course() {
 
   const navigate = useNavigate();
 
-  const { course, progress } = useSelector(state => state.course);
+  const { content, progress } = useSelector(state => state.course);
 
-  console.log('course', course, progress);
+  console.log('course', content, progress);
 
   useEffect(async () => {
     const response = await axios.get(`/static/courses/${courseId}.json`);
@@ -39,29 +39,29 @@ function Course() {
 
   const getTitle = () => {
     if (!topicId) {
-      return course?.name;
-    } else if (topicId && course?.topics && !subId) {
-      return course?.topics[topicId]?.name;
-    } else if (subId && course?.topics) {
-      return course?.topics[topicId].subs[Number(subId)]?.title;
+      return content?.name;
+    } else if (topicId && content?.topics && !subId) {
+      return content?.topics[topicId]?.name;
+    } else if (subId && content?.topics) {
+      return content?.topics[topicId].subs[Number(subId)]?.title;
     }
     return "Загружаем...";
   }
 
   const getBody = () => {
     if (!topicId) {
-      return course?.desc;
-    } else if (topicId && course?.topics && !subId) {
-      return course?.topics[topicId]?.body;
-    } else if (subId && course?.topics) {
-      return course?.topics[topicId].subs[Number(subId)]?.body;
+      return content?.desc;
+    } else if (topicId && content?.topics && !subId) {
+      return content?.topics[topicId]?.body;
+    } else if (subId && content?.topics) {
+      return content?.topics[topicId].subs[Number(subId)]?.body;
     }
     return "Загружаем...";
   }
 
   const getInput = () => {
-    if (subId && course?.topics) {
-      return course?.topics[topicId].subs[Number(subId)]?.input;
+    if (subId && content?.topics) {
+      return content?.topics[topicId].subs[Number(subId)]?.input;
     }
     return {};
   }
@@ -76,14 +76,14 @@ function Course() {
   }
 
   const getNextLink = () => {
-    const next = moveNext(course, topicId, subId);
+    const next = moveNext(content, topicId, subId);
     console.log('next link', next);
     return next;
   }
 
   return (
     <CourseWrapper>
-      <TopicStepper course={course} topicId={topicId} subId={subId} progress={progress} />
+      <TopicStepper course={content} topicId={topicId} subId={subId} progress={progress} />
       <Typography variant='h1' gutterBottom>{getTitle()}</Typography><br/>
       <Card style={{ padding: '20px' }}>
         <Body body={getBody()} />
