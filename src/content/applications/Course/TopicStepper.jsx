@@ -36,7 +36,7 @@ function TopicStepper ({ course, topicId, subId, progress }) {
                   const title = course?.topics[topicId].subs[i].title;
                   return (
                     <Tooltip key={i} title={title}>
-                        <Step sx={{ cursor: 'pointer', color: i === subId ? 'white' : 'green' }} onClick={e => onStepClick(i)} key={i} completed={progress?.[topicId]?.[i]}>
+                        <Step sx={{ cursor: 'pointer' }} onClick={e => onStepClick(i)} key={i} completed={progress?.[topicId]?.[i]}>
                           <StepLabel />
                         </Step>
                     </Tooltip>)})
