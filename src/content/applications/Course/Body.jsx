@@ -26,7 +26,7 @@ function Body ({ body }) {
     if (Array.isArray(body)) {
         return body.map((item, i) => renderType(item, i));
     } else {
-        return <Interweave content={body.text} />
+        return <Interweave content={body} />
     }
 }
 
