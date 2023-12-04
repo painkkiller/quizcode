@@ -39,7 +39,11 @@ const isTaskComplete = (input, regExpStr) => {
         const strInput = input.body.table[i].text;
         const answer = input.body.table[i].answer;
         const arr = strInput.match(reg);
-        result.push(arr && arr.join('') === answer);
+        if (!input.body.table[i].answer && !arr) {
+            result.push(true);
+        } else {
+            result.push(arr && arr.join('') === answer);
+        }
     }
     return result.every(item => item);
 }
