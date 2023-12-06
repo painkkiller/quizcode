@@ -6,22 +6,44 @@ import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import { Interweave } from 'interweave';
 
+const safeRegExp = (regStr, flags) => {
+    let reg;
+    try {
+        reg = new RegExp(regStr, flags);
+    } catch (e) {
+        // nothing to do!
+    }
+    return reg;
+}
+
 const regExpChecker = (strInput, input, index, regExpStr) => {
-    const reg = new RegExp(regExpStr, "g");
+    const reg = safeRegExp(regExpStr, "g");
+    if (!reg) return false;
     const arr = strInput.match(reg);
     const answer = input.body.table[index].answer;
-    return arr.join('') === answer;
+    if (!arr && answer === '') {
+        return true;
+    }
+    return arr && arr.join('') === answer;
 }
 
 const isTaskComplete = (input, regExpStr) => {
     if (!input.body) return false;
-    const reg = new RegExp(regExpStr, "g");
+
+    const reg = safeRegExp(regExpStr, "g");
+    
+    if (!reg) return false;
+    
     const result = [];
     for (let i = 0; i < input.body.table.length; i++) {
         const strInput = input.body.table[i].text;
         const answer = input.body.table[i].answer;
         const arr = strInput.match(reg);
-        result.push(arr.join('') === answer);
+        if (!input.body.table[i].answer && !arr) {
+            result.push(true);
+        } else {
+            result.push(arr && arr.join('') === answer);
+        }
     }
     return result.every(item => item);
 }
@@ -39,8 +61,8 @@ function RegExpInput ({ input, value, setInputValue, onNext }) {
     }
 
     const replaceByRegExp = (text) => {
-        const reg = new RegExp(value, "g");
-        if (value && reg.test(text)) {
+        const reg = safeRegExp(value, "g");
+        if (reg && value && reg.test(text)) {
             return text.replace(reg,  (match) => `<span style="color: orange">${match}</span>`);
         }
         return text;
