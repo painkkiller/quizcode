@@ -1,21 +1,29 @@
 import React from 'react';
-import { Container, Grid, Typography, Button } from '@mui/material';
-
+import { useNavigate } from 'react-router-dom';
+import { Grid, Typography, Button } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
-import CardActionArea from '@mui/material/CardActionArea';
 import IconButton from '@mui/material/IconButton';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-// Не пройдет 
+// Не пройден
 import PanoramaFishEyeIcon from '@mui/icons-material/PanoramaFishEye';
 // Пройден 
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
 export default function CardItem({ data }) {
-   const { title, finished, type, image, desc, level } = data;
+
+   const navigate = useNavigate();
+   const navigateToCourse = (path) => {
+      if (!path) {
+         console.log('no path')
+      }
+      navigate(path);
+   };
+
+   const { title, finished, type, image, desc, level, path } = data;
    return (
       <Grid item xs={12} md={4} sm={6}>
          <Card sx={{ maxWidth: 345 }} >
@@ -48,7 +56,7 @@ export default function CardItem({ data }) {
                </Typography>
             </CardContent>
             <CardActions disableSpacing>
-               <Button variant="contained" endIcon={<ArrowForwardIcon />} sx={{
+               <Button href={path} variant="contained" endIcon={<ArrowForwardIcon />} sx={{
                   textTransform: 'uppercase',
                   transition: 'all 0.3s ease',
                   letterSpacing: 2,
