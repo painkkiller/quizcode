@@ -23,7 +23,14 @@ function TopicStepper ({ course, topicId, subId, progress }) {
 
         return (
           <Box sx={{ width: '100%' }}>
-            <Stepper activeStep={Number(subId)}>
+            <Stepper
+              sx={{
+                '.Mui-active': {
+                  color: '#556f !important'
+                }
+              }}
+              activeStep={Number(subId)}
+            >
               {
                 course?.topics[topicId].subs.map((sub, i) =>{
                   const title = course?.topics[topicId].subs[i].title;

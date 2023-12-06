@@ -27,7 +27,7 @@ const testData = [
   },
   {
     id: 2,
-    title: 'Типы данных',
+    title: 'Типы данных в JavaScript',
     finished: true,
     type: 'Тест',
     image: typeofpng,
