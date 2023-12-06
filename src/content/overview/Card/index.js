@@ -56,7 +56,7 @@ export default function CardItem({ data }) {
                </Typography>
             </CardContent>
             <CardActions disableSpacing>
-               <Button onClick={() => { navigateToCourse(path) }} variant="contained" endIcon={<ArrowForwardIcon />} sx={{
+               <Button href={path} variant="contained" endIcon={<ArrowForwardIcon />} sx={{
                   textTransform: 'uppercase',
                   transition: 'all 0.3s ease',
                   letterSpacing: 2,

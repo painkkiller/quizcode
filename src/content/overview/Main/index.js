@@ -32,7 +32,8 @@ const testData = [
     type: 'Тест',
     image: typeofpng,
     desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum assumenda, suscipit quae, quibusdam sequi voluptatum voluptatem sapiente voluptate accusantium culpa, sed veniam praesentium libero ut nobis unde iste laborum vel.',
-    level: 'Начинающий'
+    level: 'Начинающий',
+    path: '/main/courses/jstypes'
   },
   {
     id: 3,
@@ -58,14 +59,14 @@ const testData = [
     image: reg,
     desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum assumenda, suscipit quae, quibusdam sequi voluptatum voluptatem sapiente voluptate accusantium culpa, sed veniam praesentium libero ut nobis unde iste laborum vel.'
   },
-  // {
-  //   id: 6,
-  //   title: 'Регулярные выражения',
-  //   finished: false,
-  //   type: 'Курс',
-  //   image: reg,
-  //   desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum assumenda, suscipit quae, quibusdam sequi voluptatum voluptatem sapiente voluptate accusantium culpa, sed veniam praesentium libero ut nobis unde iste laborum vel.'
-  // },
+  {
+    id: 6,
+    title: 'Регулярные выражения',
+    finished: false,
+    type: 'Курс',
+    image: reg,
+    desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum assumenda, suscipit quae, quibusdam sequi voluptatum voluptatem sapiente voluptate accusantium culpa, sed veniam praesentium libero ut nobis unde iste laborum vel.'
+  },
 ]
 
 function Main() {
