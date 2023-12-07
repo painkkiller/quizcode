@@ -22,16 +22,18 @@ const testData = [
     type: 'Курс',
     image: reg,
     desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum assumenda, suscipit quae, quibusdam sequi voluptatum voluptatem sapiente voluptate accusantium culpa, sed veniam praesentium libero ut nobis unde iste laborum vel.',
-    level: 'Продвинутый'
+    level: 'Продвинутый',
+    path: '/main/courses/regexp'
   },
   {
     id: 2,
-    title: 'Типы данных',
+    title: 'Типы данных в JavaScript',
     finished: true,
     type: 'Тест',
     image: typeofpng,
     desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum assumenda, suscipit quae, quibusdam sequi voluptatum voluptatem sapiente voluptate accusantium culpa, sed veniam praesentium libero ut nobis unde iste laborum vel.',
-    level: 'Начинающий'
+    level: 'Начинающий',
+    path: '/main/courses/jstypes'
   },
   {
     id: 3,
@@ -77,13 +79,10 @@ function Main() {
         alignItems="center"
         maxWidth="1150px"
       >
-
         {testData.map((data) => {
           return (<CardItem data={data} key={data.id} />)
         })}
-
       </Grid>
-
     </Container >
   );
 }
