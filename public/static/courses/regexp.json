@@ -265,45 +265,81 @@
                         "checker": "regexpChecker"
                     },
                     "solution": "<p>Оптимальное решение в данном случае - <strong>waz{2,5}up</strong>. Буква z нам тут нужна от 2 до 5 раз.</p>"
-                },
-                {
-                    "title": "Условие ИЛИ",
-                    "body": "<p> </p>",
-                    "input": {
-                        "type": "regexp-input",
-                        "body": {
-                            "instruction": "Введите шаблон и выберите в каждой строке все комбинации букв abc",
-                            "table": [
-                                {
-                                    "task": "Выбрать",
-                                    "text": "wazzzzzup",
-                                    "answer": "wazzzzzup"
-                                },
-                                {
-                                    "task": "Выбрать",
-                                    "text": "wazzzup",
-                                    "answer": "wazzzup"
-                                },
-                                {
-                                    "task": "Выбрать",
-                                    "text": "wazzup",
-                                    "answer": "wazzup"
-                                },
-                                {
-                                    "task": "Пропустить",
-                                    "text": "wazup",
-                                    "answer": ""
-                                }
-                            ]
-                        },
-                        "checker": "regexpChecker"
-                    }
                 }
             ]
         },
         "digits": {
             "name": "Цифры",
-            "subs": []
+            "subs": [
+                {
+                    "title": "Выбираем цифры",
+                    "body": "<p>В предыдущей теме мы научились работать с буквами, теперь пришло время разобраться с цифрами.</p><p>Как же как и буквы, цифры выбираются напрямую, вводом их в регулярное выражение</p><p>Cимвол <strong>\\d</strong> может использоваться вместо любой цифры от 0 до 9. Предшествующая косая черта отличает его от простого символа d и указывает, что это метасимвол.</p>",
+                    "input": {
+                        "type": "regexp-input",
+                        "body": {
+                            "instruction": "Введите шаблон и выберите в каждой строке все цифры 123",
+                            "table": [
+                                {
+                                    "task": "Выбрать",
+                                    "text": "abc123xyz",
+                                    "answer": "123"
+                                },
+                                {
+                                    "task": "Выбрать",
+                                    "text": "define \"123\"",
+                                    "answer": "123"
+                                },
+                                {
+                                    "task": "Выбрать",
+                                    "text": "var g = 123;",
+                                    "answer": "123"
+                                },
+                                {
+                                    "task": "Пропустить",
+                                    "text": "www",
+                                    "answer": ""
+                                }
+                            ]
+                        },
+                        "checker": "regexpChecker"
+                    },
+                    "solution": "<p>Решение - <strong>123</strong>.</p>"
+                },
+                {
+                    "title": "Выбираем любые цифры",
+                    "body": "<p>А что если нам нужно выбрать все цифры?</p><p>Cимвол <strong>\\d</strong> может использоваться вместо любой цифры от 0 до 9. Предшествующая косая черта отличает его от простого символа d и указывает, что это метасимвол.</p>",
+                    "input": {
+                        "type": "regexp-input",
+                        "body": {
+                            "instruction": "Введите шаблон и выберите в первых трех строках по цифре",
+                            "table": [
+                                {
+                                    "task": "Выбрать",
+                                    "text": "day 2",
+                                    "answer": "2"
+                                },
+                                {
+                                    "task": "Выбрать",
+                                    "text": "\"1\"",
+                                    "answer": "1"
+                                },
+                                {
+                                    "task": "Выбрать",
+                                    "text": "5th month",
+                                    "answer": "5"
+                                },
+                                {
+                                    "task": "Пропустить",
+                                    "text": "text without digits",
+                                    "answer": ""
+                                }
+                            ]
+                        },
+                        "checker": "regexpChecker"
+                    },
+                    "solution": "<p>Решение - <strong>\\d</strong>.</p>"
+                }
+            ]
         },
         "any-not-digit": {
             "name": "Любая не цифра",
