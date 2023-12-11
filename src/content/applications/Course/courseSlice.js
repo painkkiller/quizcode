@@ -15,7 +15,7 @@ export const courseSlice = createSlice({
     updateProgress: (state, action) => {
       const { progress, userId, courseId } = action.payload;
       state.progress = progress;
-      console.log('updateProgress', progress);
+      // console.log('updateProgress', progress);
       setUserProgress(userId, courseId, progress);
     }
   },

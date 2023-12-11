@@ -10,6 +10,7 @@ import { loadCourse, updateProgress } from './courseSlice';
 import Input from './inputs/Input';
 import Body from './Body';
 import TopicStepper from './TopicStepper';
+import Solution from './Solution';
 
 
 const CourseWrapper = styled(Container)(
@@ -64,10 +65,17 @@ function Course() {
     return {};
   }
 
+  const getSolution = () => {
+    if (subId && content?.topics) {
+      return content?.topics[topicId].subs[Number(subId)]?.solution;
+    }
+    return null;
+  }
+
   const onNext = (e) => {
-    console.log('onNext', topicId, subId, progress);
+    // console.log('onNext', topicId, subId, progress);
     const newProgress = setProgress(progress, topicId, subId);
-    console.log('newProgress', newProgress);
+    // console.log('newProgress', newProgress);
     dispatch(updateProgress({ progress: newProgress, userId: 'userId', courseId }));
     const nextLink = getNextLink();
     navigate(nextLink);
@@ -75,7 +83,6 @@ function Course() {
 
   const getNextLink = () => {
     const next = moveNext(content, topicId, subId);
-    console.log('next link', next);
     return next;
   }
 
@@ -87,6 +94,7 @@ function Course() {
         <Body body={getBody()} />
       </Card>
       <Input onNext={onNext} link={getNextLink()} input={getInput()} />
+      <Solution solution={getSolution()} />
     </CourseWrapper>
   );
 }
