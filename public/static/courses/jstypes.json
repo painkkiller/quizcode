@@ -11,31 +11,91 @@
                "body": [
                   {
                      "type": "html",
-                     "text": "<p>Значение в JavaScript всегда относится к данным определённого типа. Есть восемь основных типов данных в JavaScript. Переменная в JavaScript может содержать любые данные. В один момент там может быть строка, а в другой – число. Языки программирования, в которых такое возможно, называются «динамически типизированными». Это значит, что типы данных есть, но переменные не привязаны ни к одному из них.</p> <p>Например:</p>"
+                     "text": "<p>Все языки программирования содержат встроенные типы данных, но они часто отличаются друг от друга в разных языках. JavaScript является <i>слабо типизированным</i> или <i>динамическим</i> языком. Это значит, что <strong>вам не нужно определять тип переменной заранее</strong>. Тип определится автоматически во время выполнения программы. Также это значит, что вы можете использовать одну переменную для хранения данных различных типов:"
                   },
                   {
                      "type": "javascript",
-                     "text": "let message = 'Hello QuizCode'\nmessage = 19990407"
-                  },
-                  {
-                     "type": "html",
-                     "text": "<p>Вопросы:</p> <p>Будет ли ошибка?</p>"
+                     "text": "let value = \"Hello QuizCode\"; // string"
                   },
                   {
                      "type": "javascript",
-                     "text": "let message = 123456\nmessage = 'I love puppies'"
-                  },
-                  {
-                     "type": "html",
-                     "text": "<p>JavaScript это динамически типизированный язык?</p> <p>Верно ли утверждение: 'Переменные в JavaScript не имеют типов, но типы есть у хранящихся в них значений'?</p>"
+                     "text": "value = 19990407; // number"
                   }
                ],
                "input": {
-                  "type": "radioButton"
+                  "type": "next"
                }
             },
             {
-               "title": "number",
+               "title": "Типы данных",
+               "body": [
+                  {
+                     "type": "html",
+                     "text": "<p>JavaScript определяет семь встроенных типов данных: string, number, boolean, null, undefined, symbol, object. Все эти типы, за исключением object, называются «примитивами». Примитивы не могут быть изменены. <strong>Важно не путать сам примитив с переменной, которой присвоено значение примитивного типа. Переменной может быть переприсвоено новое значение, но существующее значение примитивного типа не может быть изменено подобно объектам, массивам и функциям.</strong></p>"
+                  },
+                  {
+                     "type": "html",
+                     "text": "<p>Пример:</p>"
+                  },
+                  {
+                     "type": "javascript",
+                     "text": "let val = \"hello\"; // hello"
+                  },
+                  {
+                     "type": "javascript",
+                     "text": "val.toUpperCase(); // Hello"
+                  },
+                  {
+                     "type": "javascript",
+                     "text": "console.log(val) // hello"
+                  },
+                  {
+                     "type": "html",
+                     "text": "<p><strong>Примитив может быть заменён, но он не может быть изменён напрямую:</strong></p>"
+                  },
+                  {
+                     "type": "javascript",
+                     "text": "val = val.toUpperCase(); // Hello"
+                  }
+               ],
+               "input": {
+                  "type": "next"
+               }
+            },
+            {
+               "title": "Оператор typeof ",
+               "body": [
+                  {
+                     "type": "html",
+                     "text": "<p>Оператор typeof проверяет тип заданного значения:</p>"
+                  },
+                  {
+                     "type": "javascript",
+                     "text": "typeof \"string\" === \"string\"; // true "
+                  },
+                  {
+                     "type": "javascript",
+                     "text": "typeof null === \"object\"; // true"
+                  },
+                  {
+                     "type": "html",
+                     "text": "<p>Оператор typeof всегда возвращает строку:</p>"
+                  },
+                  {
+                     "type": "javascript",
+                     "text": "typeof typeof 42; // \"string\""
+                  },
+                  {
+                     "type": "html",
+                     "text": "Первый оператор typeof 42 возвращает \"number\", а typeof \"number\" возвращает \"string\"."
+                  }
+               ],
+               "input": {
+                  "type": "next"
+               }
+            },
+            {
+               "title": "Number",
                "body": [
                   {
                      "type": "html",

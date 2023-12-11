@@ -17,7 +17,7 @@ export function setProgress(progress, topicId, subId) {
 }
 
 export function isTopicFunfilled(course, topicId) {
-    console.log('isTopicFunfilled', course, topicId);
+    // console.log('isTopicFunfilled', course, topicId);
     const stepsLength = course.content.topics[topicId].subs.length;
     const progressLength = course.progress[topicId]?.length;
     return stepsLength === progressLength && course.progress[topicId].every(item => item);
