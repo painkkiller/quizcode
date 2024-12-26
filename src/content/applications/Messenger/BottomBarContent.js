@@ -30,7 +30,7 @@ function BottomBarContent() {
 
   const user = {
     name: 'Catherine Pike',
-    avatar: '/static/images/avatars/1.jpg'
+    avatar: '/quizcode/static/images/avatars/1.jpg'
   };
 
   return (

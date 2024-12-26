@@ -3,7 +3,7 @@ import { Typography, Avatar, Grid, useTheme } from '@mui/material';
 function PageHeader() {
   const user = {
     name: 'Catherine Pike',
-    avatar: '/static/images/avatars/1.jpg'
+    avatar: '/quizcode/static/images/avatars/1.jpg'
   };
   const theme = useTheme();
 
