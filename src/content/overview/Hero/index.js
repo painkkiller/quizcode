@@ -15,8 +15,6 @@ const TypographyH2 = styled(Typography)(
 `
 );
 
-
-
 function Hero() {
   return (
     <Container maxWidth="lg" sx={{ textAlign: 'center' }}>
@@ -41,7 +39,7 @@ function Hero() {
           </TypographyH2>
           <Button
             component={RouterLink}
-            to="/auth/login"
+            to="/#/auth/login"
             size="large"
             variant="contained"
           >
@@ -52,7 +50,7 @@ function Hero() {
             component="a"
             target="_blank"
             rel="noopener"
-            href="/auth/signup"
+            href="/#/auth/signup"
             size="large"
             variant="text"
           >

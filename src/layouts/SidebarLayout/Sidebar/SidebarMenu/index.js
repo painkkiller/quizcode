@@ -130,9 +130,9 @@ const SubMenuWrapper = styled(Box)(
                 background: ${theme.colors.alpha.trueWhite[100]};
                 opacity: 0;
                 transition: ${theme.transitions.create([
-    'transform',
-    'opacity'
-  ])};
+                  'transform',
+                  'opacity'
+                ])};
                 width: 6px;
                 height: 6px;
                 transform: scale(0);
@@ -158,11 +158,10 @@ const SubMenuWrapper = styled(Box)(
 );
 
 function SidebarMenu() {
-
   const theme = useTheme();
 
   const { closeSidebar } = useContext(SidebarContext);
-  const course = useSelector(state => state.course);
+  const course = useSelector((state) => state.course);
 
   return (
     <>
@@ -175,7 +174,7 @@ function SidebarMenu() {
                   disableRipple
                   component={RouterLink}
                   onClick={closeSidebar}
-                  to="/overview"
+                  to="/#/overview"
                   startIcon={<DesignServicesTwoToneIcon />}
                 >
                   Главная
@@ -192,22 +191,27 @@ function SidebarMenu() {
             </ListSubheader>
           }
         >
-           <SubMenuWrapper>
+          <SubMenuWrapper>
             <List component="div">
-          {
-            course?.content?.topics ? Object.keys(course?.content?.topics).map(topic => {
-              
-              return (<ListItem key={topic} component="div">
-                <Button
-                  style={{ color: isTopicFunfilled(course, topic) ? 'white' : `${theme.colors.alpha.trueWhite[70]}` }}
-                  href={`/main/courses/${course?.content?.id}/${topic}/0`}
-                  disableRipple
-                >
-                 { course?.content?.topics[topic].name }
-                </Button>
-              </ListItem>)
-            }) : null
-          }
+              {course?.content?.topics
+                ? Object.keys(course?.content?.topics).map((topic) => {
+                    return (
+                      <ListItem key={topic} component="div">
+                        <Button
+                          style={{
+                            color: isTopicFunfilled(course, topic)
+                              ? 'white'
+                              : `${theme.colors.alpha.trueWhite[70]}`
+                          }}
+                          href={`/#/main/courses/${course?.content?.id}/${topic}/0`}
+                          disableRipple
+                        >
+                          {course?.content?.topics[topic].name}
+                        </Button>
+                      </ListItem>
+                    );
+                  })
+                : null}
             </List>
           </SubMenuWrapper>
         </List>
