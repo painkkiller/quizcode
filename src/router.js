@@ -6,21 +6,27 @@ import BaseLayout from 'src/layouts/BaseLayout';
 import SuspenseLoader from 'src/components/SuspenseLoader';
 
 const Loader = (Component) => (props) =>
-(
-  <Suspense fallback={<SuspenseLoader />}>
-    <Component {...props} />
-  </Suspense>
-);
+  (
+    <Suspense fallback={<SuspenseLoader />}>
+      <Component {...props} />
+    </Suspense>
+  );
 
 // Pages
 const Overview = Loader(lazy(() => import('src/content/overview')));
 
 // Auth pages
 const Login = Loader(lazy(() => import('src/content/pages/Login/JwtLogin')));
-const Register = Loader(lazy(() => import('src/content/pages/Register/JwtRegister')));
-const ForgotPassword = Loader(lazy(() => import('src/content/pages/ForgotPassword')));
+const Register = Loader(
+  lazy(() => import('src/content/pages/Register/JwtRegister'))
+);
+const ForgotPassword = Loader(
+  lazy(() => import('src/content/pages/ForgotPassword'))
+);
 const Tests = Loader(lazy(() => import('src/content/pages/Tests/index')));
-const Course = Loader(lazy(() => import('src/content/applications/Course/index')));
+const Course = Loader(
+  lazy(() => import('src/content/applications/Course/index'))
+);
 
 const UserProfile = Loader(
   lazy(() => import('src/content/applications/Users/profile'))
@@ -29,7 +35,6 @@ const UserProfile = Loader(
 const UserSettings = Loader(
   lazy(() => import('src/content/applications/Users/settings'))
 );
-
 
 // Status
 
@@ -83,10 +88,10 @@ const routes = [
             path: '',
             element: <Navigate to="404" replace />
           },
-          {
+          /*  {
             path: '404',
             element: <Status404 />
-          },
+          }, */
           {
             path: '500',
             element: <Status500 />
