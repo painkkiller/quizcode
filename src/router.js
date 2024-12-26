@@ -88,10 +88,10 @@ const routes = [
             path: '',
             element: <Navigate to="404" replace />
           },
-          /*  {
+          {
             path: '404',
             element: <Status404 />
-          }, */
+          },
           {
             path: '500',
             element: <Status500 />
