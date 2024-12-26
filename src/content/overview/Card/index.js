@@ -63,7 +63,7 @@ export default function CardItem({ data }) {
         </CardContent>
         <CardActions disableSpacing>
           <Button
-            href={`/#${path}`}
+            href={`/quizcode/#${path}`}
             variant="contained"
             endIcon={<ArrowForwardIcon />}
             sx={{
