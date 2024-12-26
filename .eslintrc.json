@@ -64,6 +64,6 @@
     "react/no-unstable-nested-components": ["off"],
     "object-shorthand": ["off"],
     "no-unused-vars": ["off"],
-    "no-else-return": 1
+    "no-else-return": ["off"]
   }
 }
