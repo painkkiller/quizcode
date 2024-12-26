@@ -4,6 +4,7 @@
   "title": "quizcode",
   "description": "tests for programmers",
   "private": false,
+  "homepage": "https://painkkiller.github.io/quizcode",
   "dependencies": {
     "@emotion/react": "11.9.0",
     "@emotion/styled": "11.8.1",
